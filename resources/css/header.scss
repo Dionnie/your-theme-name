@@ -3,6 +3,31 @@ $mega-menu-padding: 20px;
 $menu-padding: 20px;
 $primary-color: #ab0c2f;
 
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #ab0c2f;
+}
+
+.skip-link {
+  position: absolute;
+  left: 0;
+  top: -40px;
+  background: white;
+  color: #ab0c2f;
+  font-weight: bold;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0; /* no rounding */
+  outline-offset: 4px;
+}
+
+.skip-link:focus {
+  top: 10px;
+  left: 10px;
+  border-radius: 0 !important;
+  box-shadow: 0 0 0 2px black;
+}
+
 @mixin menu-item {
   text-decoration: none;
   padding: 1rem;
@@ -13,10 +38,17 @@ $primary-color: #ab0c2f;
   }
 }
 
+header {
+  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.1);
+  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.1);
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.1);
+}
+
 .top-message {
   display: flex;
   color: white;
-  padding: 20px;
+  padding: 15px 20px;
+  font-size: 14px;
   background-color: $primary-color;
   justify-content: space-between;
 }
