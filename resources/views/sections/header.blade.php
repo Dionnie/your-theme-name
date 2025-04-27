@@ -30,13 +30,15 @@
       ?>
 
       <div class="primary-navigation-wrapper">
-        {!!
+        @if (has_nav_menu('primary_navigation')) {!!
+
         wp_nav_menu([
         'theme_location' => 'primary_navigation',
         'menu_class' => 'primary-navigation ',
         'container' => false,
         ])
-        !!}
+
+        !!} @endif
       </div>
 
       <!--      @if (has_nav_menu('primary_navigation'))

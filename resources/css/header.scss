@@ -1,5 +1,6 @@
-$dropdown-gap: 30px;
-$mega-menu-padding: 40px;
+$dropdown-gap: 20px;
+$mega-menu-padding: 20px;
+$menu-padding: 20px;
 $primary-color: #ab0c2f;
 
 @mixin menu-item {
@@ -12,10 +13,6 @@ $primary-color: #ab0c2f;
   }
 }
 
-/* header * {
-  box-sizing: border-box;
-}
- */
 .top-message {
   display: flex;
   color: white;
@@ -25,7 +22,7 @@ $primary-color: #ab0c2f;
 }
 
 .primary-navigation-wrapper {
-  padding: 80px 20px;
+  padding: $menu-padding;
   display: flex;
   align-items: center;
   justify-content: center;
