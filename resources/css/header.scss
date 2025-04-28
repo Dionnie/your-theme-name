@@ -145,9 +145,24 @@ ul.primary-navigation > li.menu-item > ul.sub-menu > li.menu-item ul.sub-menu {
   background: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   top: 0;
-  left: calc(100%);
-  border-left: $dropdown-gap solid transparent;
+  left: calc(100% + $dropdown-gap);
+  // border-left: $dropdown-gap solid transparent;
   //margin-left: $dropdown-gap;
+
+  &::after {
+    content: 'eeee;';
+    position: absolute;
+    float: left;
+    left: -$dropdown-gap;
+    top: 0;
+    z-index: 999;
+    height: 100%;
+    content: '';
+    display: block;
+    width: $dropdown-gap;
+
+    background-color: transparent;
+  }
 }
 
 li.mega-menu {
