@@ -3,6 +3,18 @@ $mega-menu-padding: 20px;
 $menu-padding: 20px;
 $primary-color: #ab0c2f;
 
+@mixin menu-active() {
+  z-index: 2;
+  background: $primary-color;
+  cursor: pointer;
+  outline: none;
+  box-shadow: none;
+  color: white;
+  &:after {
+    border-top: 6px solid white;
+  }
+}
+
 :focus {
   outline: none;
   box-shadow: 0 0 0 3px #72081f;
@@ -76,18 +88,16 @@ ul.primary-navigation ul.sub-menu {
 }
 
 ul.primary-navigation li.menu-item {
+  &.current_page_item,
+  &.current_page_ancestor {
+    & > a {
+      @include menu-active();
+    }
+  }
   &:hover,
   &:focus-within {
     & > a {
-      z-index: 2;
-      background: $primary-color;
-      cursor: pointer;
-      outline: none;
-      box-shadow: none;
-      color: white;
-      &:after {
-        border-top: 6px solid white;
-      }
+      @include menu-active();
     }
     & > .sub-menu {
       visibility: visible;
