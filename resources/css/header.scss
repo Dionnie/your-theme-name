@@ -124,7 +124,7 @@ ul.primary-navigation li.menu-item.menu-item-has-children {
 // 1st level menu items
 ul.primary-navigation > li.menu-item {
   &.menu-item-has-children {
-    border-bottom: $dropdown-gap solid red;
+    border-bottom: $dropdown-gap solid transparent;
     margin-bottom: -$dropdown-gap;
   }
 }
@@ -146,7 +146,7 @@ ul.primary-navigation > li.menu-item > ul.sub-menu > li.menu-item ul.sub-menu {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   top: 0;
   left: calc(100%);
-  border-left: $dropdown-gap solid red;
+  border-left: $dropdown-gap solid transparent;
   //margin-left: $dropdown-gap;
 }
 
