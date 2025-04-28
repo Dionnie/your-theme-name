@@ -3,6 +3,11 @@ $mega-menu-padding: 20px;
 $menu-padding: 20px;
 $primary-color: #ab0c2f;
 
+.site-name {
+  font-size: 28px;
+  font-weight: 700;
+}
+
 @mixin menu-active() {
   z-index: 2;
   background: $primary-color;

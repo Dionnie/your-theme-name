@@ -25,7 +25,7 @@
       if (has_custom_logo()) {
         echo '<img width="200px" src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '">';
       } else {
-        echo '<h1>' . get_bloginfo('name') . '</h1>';
+        echo '<h1 class="site-name">' . get_bloginfo('name') . '</h1>';
       }
       ?>
 

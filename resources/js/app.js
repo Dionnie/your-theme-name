@@ -1,11 +1,7 @@
 import.meta.glob(['../images/**', '../fonts/**']);
 import 'bootstrap';
-import jQuery from 'jquery';
-Object.assign(window, { $: jQuery, jQuery });
-// or if you don't want to pollute the entire window scope you can use the following to set $ as a global variable in your script
-globalThis.$ = jQuery;
 
-$(document).ready(function () {
+jQuery(document).ready(function ($) {
   function adjustSubMenuPosition() {
     $('.sub-menu').each(function () {
       const $submenu = $(this);
@@ -41,7 +37,6 @@ $(document).ready(function () {
   adjustSubMenuPosition();
 
   // Run on window resize (with small delay for stability)
-
   $(window).on('resize', function () {
     adjustSubMenuPosition();
   });
