@@ -24,11 +24,14 @@ $primary-color: #ab0c2f;
   box-shadow: 0 0 0 3px #72081f;
 }
 
-header {
-  position: relative !important;
-  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.1);
-  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.1);
-  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.1);
+.shadow-dummy {
+  bottom: 0;
+  background: transparent !important;
+  width: 100%;
+  position: absolute;
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  pointer-events: none;
 }
 
 .skip-link {
@@ -164,11 +167,9 @@ ul.primary-navigation > li.menu-item > ul.sub-menu > li.menu-item ul.sub-menu {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   top: 0;
   left: calc(100% + $dropdown-gap);
-  // border-left: $dropdown-gap solid transparent;
-  //margin-left: $dropdown-gap;
 
   &::after {
-    content: 'eeee;';
+    content: '';
     position: absolute;
     float: left;
     left: -$dropdown-gap;
@@ -178,9 +179,12 @@ ul.primary-navigation > li.menu-item > ul.sub-menu > li.menu-item ul.sub-menu {
     content: '';
     display: block;
     width: $dropdown-gap;
-
     background-color: transparent;
   }
+}
+
+header {
+  position: relative;
 }
 
 li.mega-menu {
