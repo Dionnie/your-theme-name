@@ -41,19 +41,19 @@ use App\Walkers\CustomNavWalker;
         ?>
       </a>
 
-      <div class="primary-navigation-wrapper">
 
-        @if (has_nav_menu('primary_navigation')) {!!
 
-        wp_nav_menu([
-        'theme_location' => 'primary_navigation',
-        'menu_class' => 'primary-navigation ',
+      @if (has_nav_menu('primary_navigation')) {!!
 
-        'container' => false,
-        ])
+      wp_nav_menu([
+      'theme_location' => 'primary_navigation',
+      'menu_class' => 'primary-navigation ',
 
-        !!} @endif
-      </div>
+      'container' => false,
+      ])
+
+      !!} @endif
+
 
       <!--      @if (has_nav_menu('primary_navigation'))
         {!! wp_nav_menu($primarymenu()) !!}

@@ -1,6 +1,6 @@
 $dropdown-gap: 20px;
 $mega-menu-padding: 20px;
-$menu-padding: 20px;
+$menu-padding: 0px;
 $primary-color: #ab0c2f;
 
 @mixin dropdown-above-header($enable: true) {
@@ -98,13 +98,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.primary-navigation-wrapper {
-  padding: $menu-padding;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 ul.primary-navigation {
