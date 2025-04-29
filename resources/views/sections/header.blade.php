@@ -1,25 +1,35 @@
+<?php
+
+use App\Walkers\CustomNavWalker;
+
+?>
+
+
 <header class="banner">
-  <div style="z-index:1; position: static; width:100vw">
-    <div class="top-message">
-      <span>
-        +88 123 456 789
 
-      </span>
-      <span>
 
-        info@example.com
+  <div class="top-message">
+    <span>
+      +88 123 456 789
 
-      </span>
-      <span>
+    </span>
+    <span>
 
-        Mon - Fri : 09:00 - 18:00
-      </span>
-    </div>
-    @if (has_nav_menu('primary_navigation'))
-    <nav
-      aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
-      <div class="container">
+      info@example.com
 
+    </span>
+    <span>
+
+      Mon - Fri : 09:00 - 18:00
+    </span>
+  </div>
+  @if (has_nav_menu('primary_navigation'))
+  <nav
+    aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
+    <div class="shadow-dummy"></div>
+    <div class="container">
+
+      <a href="<?php echo  home_url() ?>" class="site-logo">
         <?php
         $custom_logo_id = get_theme_mod('custom_logo');
         $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
@@ -29,27 +39,30 @@
           echo '<h1 class="site-name">' . get_bloginfo('name') . '</h1>';
         }
         ?>
+      </a>
 
-        <div class="primary-navigation-wrapper">
-          @if (has_nav_menu('primary_navigation')) {!!
+      <div class="primary-navigation-wrapper">
 
-          wp_nav_menu([
-          'theme_location' => 'primary_navigation',
-          'menu_class' => 'primary-navigation ',
-          'container' => false,
-          ])
+        @if (has_nav_menu('primary_navigation')) {!!
 
-          !!} @endif
-        </div>
+        wp_nav_menu([
+        'theme_location' => 'primary_navigation',
+        'menu_class' => 'primary-navigation ',
 
-        <!--      @if (has_nav_menu('primary_navigation'))
+        'container' => false,
+        ])
+
+        !!} @endif
+      </div>
+
+      <!--      @if (has_nav_menu('primary_navigation'))
         {!! wp_nav_menu($primarymenu()) !!}
         @endif -->
-      </div>
-    </nav>
-    @endif
+    </div>
+  </nav>
+  @endif
 
 
-  </div>
-  <div class="shadow-dummy">&nbsp;</div>
+
+
 </header>

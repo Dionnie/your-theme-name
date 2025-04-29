@@ -3,13 +3,38 @@ $mega-menu-padding: 20px;
 $menu-padding: 20px;
 $primary-color: #ab0c2f;
 
+@mixin dropdown-above-header($enable: true) {
+  @if $enable {
+    & ul.primary-navigation ul.sub-menu {
+      z-index: 2;
+    }
+
+    & .shadow-dummy {
+      z-index: 0;
+    }
+  } @else {
+    & ul.primary-navigation ul.sub-menu {
+      z-index: 0;
+    }
+
+    & .shadow-dummy {
+      z-index: 1;
+    }
+  }
+}
+
+header {
+  position: relative;
+  z-index: 1;
+  @include dropdown-above-header($enable: false);
+}
+
 .site-name {
   font-size: 28px;
   font-weight: 700;
 }
 
 @mixin menu-active() {
-  z-index: 2;
   background: $primary-color;
   cursor: pointer;
   box-shadow: none;
@@ -24,9 +49,16 @@ $primary-color: #ab0c2f;
   box-shadow: 0 0 0 3px #72081f;
 }
 
+.site-logo {
+  text-decoration: none;
+  box-shadow: none;
+  outline: none;
+  color: $primary-color;
+}
+
 .shadow-dummy {
   bottom: 0;
-  background: transparent !important;
+  background: inherit;
   width: 100%;
   position: absolute;
   box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.3);
@@ -85,7 +117,6 @@ ul.primary-navigation {
 
 ul.primary-navigation ul.sub-menu {
   transition: all 100ms ease-in !important;
-
   white-space: nowrap;
   list-style: none;
   margin: 0;
@@ -116,6 +147,7 @@ ul.primary-navigation li.menu-item {
 }
 
 ul.primary-navigation li.menu-item > a {
+  white-space: nowrap;
   display: inline-block;
   width: 100%;
   padding: 1rem;
@@ -181,10 +213,6 @@ ul.primary-navigation > li.menu-item > ul.sub-menu > li.menu-item ul.sub-menu {
     width: $dropdown-gap;
     background-color: transparent;
   }
-}
-
-header {
-  position: relative;
 }
 
 li.mega-menu {
