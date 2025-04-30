@@ -2,42 +2,70 @@ import.meta.glob(['../images/**', '../fonts/**']);
 import 'bootstrap';
 
 jQuery(document).ready(function ($) {
-  function adjustSubMenuPosition() {
-    $('.sub-menu').each(function () {
-      const $submenu = $(this);
-      const offset = $submenu.offset();
-      const width = $submenu.outerWidth();
-      const windowWidth = $(window).width();
-      const padding = 20; // 20px padding from edges
+  const PADDING = 20; // Minimum distance from the edge of the screen
 
-      // Reset position first
+  /**
+   * Checks whether a given element is overflowing off the left or right side of the viewport.
+   * @param {jQuery} $element - The jQuery-wrapped element to check.
+   * @param {number} padding - Optional padding to maintain from edges.
+   * @returns {Object} - Information about overflow and element offset.
+   */
+  function isElementOverflowing($element, padding = PADDING) {
+    const offset = $element.offset(); // Distance from top-left of the page
+    const width = $element.outerWidth(); // Full width including padding/border
+    const windowWidth = $(window).width(); // Viewport width
+
+    return {
+      overflowRight: offset.left + width + padding > windowWidth,
+      overflowLeft: offset.left - padding < 0,
+      offset,
+      width,
+    };
+  }
+
+  /**
+   * Adjusts the position of each submenu inside `.primary-navigation` to prevent it
+   * from overflowing off the viewport. Moves it left or adds padding as needed.
+   */
+  function adjustSubMenuPosition() {
+    $('ul.primary-navigation > li.menu-item > ul.sub-menu').each(function () {
+      const $submenu = $(this);
+
+      // Reset position to default before recalculating
       $submenu.css({ left: '', right: '' });
 
-      const newOffset = $submenu.offset(); // get fresh after reset
-      const overflowRight = newOffset.left + width + padding - windowWidth;
-      const overflowLeft = newOffset.left - padding;
+      const { overflowRight, overflowLeft, offset, width } =
+        isElementOverflowing($submenu);
 
-      if (overflowRight > 0) {
-        const shiftLeft = overflowRight;
-        if (newOffset.left - shiftLeft >= padding) {
+      // If submenu overflows off the right edge of the screen
+      if (overflowRight) {
+        const shiftLeft = offset.left + width + PADDING - $(window).width();
+
+        $submenu.addClass('sub-menu-left-align');
+
+        // If shifting left won't push it off the left edge
+        if (offset.left - shiftLeft >= PADDING) {
           $submenu.css(
             'left',
-            parseInt($submenu.css('left') || 0) - shiftLeft + 'px'
+            (parseInt($submenu.css('left')) || 0) - shiftLeft + 'px'
           );
         } else {
-          $submenu.css('left', padding + 'px');
+          // Otherwise, align it with minimum padding from the left
+          $submenu.css('left', PADDING + 'px');
         }
-      } else if (overflowLeft < 0) {
-        $submenu.css('left', padding + 'px');
+      }
+      // If submenu overflows off the left edge
+      else if (overflowLeft) {
+        $submenu.css('left', PADDING + 'px');
+      } else {
+        $submenu.removeClass('sub-menu-left-align');
       }
     });
   }
 
-  // Run on page load
+  // Run the adjustment once the page is fully loaded
   adjustSubMenuPosition();
 
-  // Run on window resize (with small delay for stability)
-  $(window).on('resize', function () {
-    adjustSubMenuPosition();
-  });
+  // Recalculate submenu positions when the window is resized
+  $(window).on('resize', adjustSubMenuPosition);
 });
