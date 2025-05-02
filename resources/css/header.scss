@@ -149,7 +149,6 @@ ul.primary-navigation ul.sub-menu {
   margin: 0;
   padding-left: 0;
   visibility: hidden;
-  opacity: 0;
   display: none;
   position: absolute;
 }
@@ -169,7 +168,6 @@ ul.primary-navigation li.menu-item {
     }
     & > .sub-menu {
       visibility: visible;
-      opacity: 1;
       display: block;
     }
   }

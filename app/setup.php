@@ -198,7 +198,7 @@ add_shortcode('mega_menu', function ($atts) {
     ob_start();
 ?>
     <div style=" background: #72081F !important; padding: 20px; color:white !important">
-        <h1>MEGA MENU</h1>
+        <h1 class="animate__animated animate__bounce">An animated element</h1>
 
     </div>
 <?php

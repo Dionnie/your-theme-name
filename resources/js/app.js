@@ -1,5 +1,6 @@
 import.meta.glob(['../images/**', '../fonts/**']);
 import 'bootstrap';
+import 'jquery-hoverintent';
 
 jQuery(document).ready(function ($) {
   const PADDING = 20; // Minimum distance from the edge of the screen
@@ -91,4 +92,56 @@ jQuery(document).ready(function ($) {
 
   // Recalculate submenu positions when the window is resized
   $(window).on('resize', adjustSubMenuPosition);
+
+  function applyAnimateHover(selector, animationName) {
+    $(document).on('mouseenter', selector, function () {
+      const el = $(this);
+      el.removeClass(`animate__animated animate__${animationName}`);
+      void el[0].offsetWidth; // Reflow
+      el.addClass(`animate__animated animate__${animationName}`);
+    });
+
+    $(document).on('mouseleave', selector, function () {
+      const el = $(this);
+      el.one(
+        'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
+        function () {
+          el.removeClass(`animate__animated animate__${animationName}`);
+        }
+      );
+    });
+  }
+
+  function applyHoverIntentAnimation(
+    parentSelector,
+    childSelector,
+    animationName
+  ) {
+    $(parentSelector).hoverIntent({
+      over: function () {
+        const target = $(this).find(childSelector);
+        target.removeClass(`animate__animated animate__${animationName}`);
+        void target[0].offsetWidth; // Force reflow
+        target.addClass(`animate__animated animate__${animationName}`);
+      },
+      out: function () {
+        const target = $(this).find(childSelector);
+        target.one(
+          'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
+          function () {
+            target.removeClass(`animate__animated animate__${animationName}`);
+          }
+        );
+      },
+      timeout: 150, // Adjust as needed (ms delay before `out`)
+    });
+  }
+
+  applyAnimateHover('.site-logo', 'tada');
+
+  applyHoverIntentAnimation(
+    'li.menu-item.menu-item-has-children',
+    'ul.sub-menu',
+    'slideInUp animate__faster'
+  );
 });

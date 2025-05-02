@@ -24,7 +24,9 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.3.5",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "jquery-hoverintent": "^1.10.2"
   }
 }
