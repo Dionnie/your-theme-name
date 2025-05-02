@@ -28,11 +28,15 @@ jQuery(document).ready(function ($) {
    * from overflowing off the viewport. Moves it left or adds padding as needed.
    */
   function adjustSubMenuPosition() {
-    $('ul.primary-navigation > li.menu-item > ul.sub-menu').each(function () {
+    $('ul.primary-navigation .sub-menu.level-1').each(function () {
       const $submenu = $(this);
 
       // Reset position to default before recalculating
       $submenu.css({ left: '', right: '' });
+      $submenu.removeClass('sub-menu-left-align');
+
+      $submenu.css({ display: 'block' });
+      //  const $submenuParent = $(this).closest('.sub-menu.level-1');
 
       const { overflowRight, overflowLeft, offset, width } =
         isElementOverflowing($submenu);
@@ -41,7 +45,7 @@ jQuery(document).ready(function ($) {
       if (overflowRight) {
         const shiftLeft = offset.left + width + PADDING - $(window).width();
 
-        $submenu.addClass('sub-menu-left-align');
+        //  $submenuParent.addClass('sub-menu-left-align');
 
         // If shifting left won't push it off the left edge
         if (offset.left - shiftLeft >= PADDING) {
@@ -58,8 +62,27 @@ jQuery(document).ready(function ($) {
       else if (overflowLeft) {
         $submenu.css('left', PADDING + 'px');
       } else {
-        $submenu.removeClass('sub-menu-left-align');
+        //    $submenu.removeClass('sub-menu-left-align');
       }
+
+      $(this)
+        .find('.sub-menu.level-2')
+        .each(function () {
+          const $submenu = $(this);
+          $submenu.css({ display: 'block' });
+
+          const $submenuParent = $(this).closest('.sub-menu.level-1');
+
+          const { overflowRight, overflowLeft, offset, width } =
+            isElementOverflowing($submenu);
+
+          // If submenu overflows off the right edge of the screen
+          if (overflowRight) {
+            $submenuParent.toggleClass('sub-menu-left-align');
+          }
+        });
+
+      // $submenu.css({ display: 'none' });
     });
   }
 

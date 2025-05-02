@@ -37,10 +37,6 @@ $primary-color: #ab0c2f;
 }
 
 .sub-menu-left-align {
-  & {
-    right: 0;
-  }
-
   & > li.menu-item > ul.sub-menu {
     left: unset !important;
     right: calc(100% + $dropdown-gap);
@@ -62,7 +58,7 @@ $primary-color: #ab0c2f;
 header {
   position: relative;
   z-index: 1;
-  @include dropdown-above-header($enable: true);
+  @include dropdown-above-header();
 }
 
 .site-name {
@@ -134,7 +130,7 @@ header {
   padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  //justify-content: space-between;
 }
 
 ul.primary-navigation {
@@ -153,6 +149,7 @@ ul.primary-navigation ul.sub-menu {
   padding-left: 0;
   visibility: hidden;
   opacity: 0;
+  display: none;
   position: absolute;
 }
 
@@ -172,12 +169,14 @@ ul.primary-navigation li.menu-item {
     & > .sub-menu {
       visibility: visible;
       opacity: 1;
+      display: block;
     }
   }
 }
 
 ul.primary-navigation li.menu-item > a {
   display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 1rem;
   color: black;
