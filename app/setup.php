@@ -197,16 +197,8 @@ add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $a
 add_shortcode('mega_menu', function ($atts) {
     ob_start();
 ?>
-    <div style="height: 200px; background: #72081F !important; padding: 20px;">
-        <div class="column">
-            <p>MENU</p>
-            <ul>
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
-                <li><a href="#">Link 3</a></li>
-                <li><a href="#">Link 4</a></li>
-            </ul>
-        </div>
+    <div style=" background: #72081F !important; padding: 20px; color:white !important">
+        <h1>MEGA MENU</h1>
 
     </div>
 <?php
