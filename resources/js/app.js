@@ -139,9 +139,9 @@ jQuery(document).ready(function ($) {
 
   applyAnimateHover('.site-logo', 'tada');
 
-  applyHoverIntentAnimation(
+  /*   applyHoverIntentAnimation(
     'li.menu-item.menu-item-has-children',
     'ul.sub-menu',
     'slideInUp animate__faster'
-  );
+  ); */
 });
