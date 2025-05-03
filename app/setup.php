@@ -197,7 +197,7 @@ add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $a
 add_shortcode('mega_menu', function ($atts) {
     ob_start();
 ?>
-    <div style=" background: #72081F !important; padding: 20px; color:white !important">
+    <div style=" background: #72081F !important; padding: 20px; margin: 20px;  color:white !important">
         <h1 class="animate__animated animate__bounce">An animated element</h1>
 
     </div>
