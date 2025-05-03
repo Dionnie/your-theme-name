@@ -115,15 +115,8 @@ jQuery(document).ready(function ($) {
             border-left: 10px solid transparent;
             border-right: 10px solid transparent;
             border-bottom: 15px solid grey;
-            left: ${centerX}px; /* -10 to center the 20px wide arrow */
-            transform: translateX(-10px);
-          
-
-
-            
-
-
-
+            left: ${centerX - 20}px;
+      
           }
         </style>
       `;
