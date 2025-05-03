@@ -23,13 +23,6 @@ $primary-color: #ab0c2f;
   }
 }
 
-/* @mixin dropdown-above-header($direction: right) {
-  @if $direction == right {
-  } @else if $direction == left {
-  }
-}
- */
-
 .menu-item > a {
   display: flex;
   flex-direction: column;

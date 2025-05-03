@@ -1,6 +1,5 @@
 import.meta.glob(['../images/**', '../fonts/**']);
 import 'bootstrap';
-import 'jquery-hoverintent';
 
 jQuery(document).ready(function ($) {
   const PADDING = 20; // Minimum distance from the edge of the screen
