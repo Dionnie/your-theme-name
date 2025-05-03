@@ -114,10 +114,26 @@ jQuery(document).ready(function ($) {
             bottom: 100%;
             border-left: 10px solid transparent;
             border-right: 10px solid transparent;
-            border-bottom: 15px solid grey;
-            left: ${centerX - 20}px;
-      
+            border-bottom: 12px solid white;
+            left: ${centerX - 18}px;
+            z-index:2;
+           
           }
+
+          li#${submenuId} .sub-menu.level-1::after {
+            position: absolute;
+            content: '';
+            bottom: 100%;
+            border-left: 14px solid transparent;
+            border-right: 14px solid transparent;
+            border-bottom: 16px solid rgba(0,0,0, 0.02);
+            z-index:1;
+            left: ${centerX - 22}px;
+         
+          }
+
+
+        
         </style>
       `;
       $('head').append(style);
