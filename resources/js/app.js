@@ -29,8 +29,10 @@ jQuery(document).ready(function ($) {
    * from overflowing off the viewport. Moves it left or adds padding as needed.
    */
   function adjustSubMenuPosition() {
+    $('style[data-submenu-style]').remove();
     $('ul.primary-navigation .sub-menu.level-1').each(function () {
       const $submenu = $(this);
+      const $submenuParent = $submenu.parent('li.menu-item-has-children');
 
       // Reset position to default before recalculating
       $submenu.css({ left: '', right: '' });
@@ -63,13 +65,23 @@ jQuery(document).ready(function ($) {
       else if (overflowLeft) {
         $submenu.css('left', PADDING + 'px');
       } else {
-        //    $submenu.removeClass('sub-menu-left-align');
+        // $submenu.removeClass('sub-menu-left-align');
       }
+
+      /*$(this).find('.sub-menu.level-2::before').css({
+        position: absolute,
+        content: '',
+        bottom: '100%',
+        borderLeft: '10px solid transparent',
+        borderRight: '10px solid transparent',
+        borderBottom: '15px solid grey',
+      });*/
 
       $(this)
         .find('.sub-menu.level-2')
         .each(function () {
           const $submenu = $(this);
+
           $submenu.css({ display: 'block' });
 
           const $submenuParent = $(this).closest('.sub-menu.level-1');
@@ -84,6 +96,30 @@ jQuery(document).ready(function ($) {
         });
 
       // $submenu.css({ display: 'none' });
+
+      // Calculate the center X of the parent relative to the submenu
+      const parentOffset = $submenuParent.offset().left;
+      const submenuOffset = $submenu.offset().left;
+      const parentWidth = $submenuParent.outerWidth();
+
+      const centerX = parentOffset - submenuOffset + parentWidth / 2;
+
+      const submenuId = $submenuParent.attr('id');
+
+      const style = `
+        <style data-submenu-style>
+          li#${submenuId} .sub-menu.level-1::before {
+            position: absolute;
+            content: '';
+            bottom: 100%;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 15px solid grey;
+            left: ${centerX - 10}px; /* -10 to center the 20px wide arrow */
+          }
+        </style>
+      `;
+      $('head').append(style);
     });
   }
 
