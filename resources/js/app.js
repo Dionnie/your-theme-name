@@ -36,9 +36,7 @@ jQuery(document).ready(function ($) {
       // Reset position to default before recalculating
       $submenu.css({ left: '', right: '' });
       $submenu.removeClass('sub-menu-left-align');
-
       $submenu.css({ display: 'block' });
-      //  const $submenuParent = $(this).closest('.sub-menu.level-1');
 
       const { overflowRight, overflowLeft, offset, width } =
         isElementOverflowing($submenu);
@@ -46,8 +44,6 @@ jQuery(document).ready(function ($) {
       // If submenu overflows off the right edge of the screen
       if (overflowRight) {
         const shiftLeft = offset.left + width + PADDING - $(window).width();
-
-        //  $submenuParent.addClass('sub-menu-left-align');
 
         // If shifting left won't push it off the left edge
         if (offset.left - shiftLeft >= PADDING) {
@@ -64,23 +60,12 @@ jQuery(document).ready(function ($) {
       else if (overflowLeft) {
         $submenu.css('left', PADDING + 'px');
       } else {
-        // $submenu.removeClass('sub-menu-left-align');
       }
-
-      /*$(this).find('.sub-menu.level-2::before').css({
-        position: absolute,
-        content: '',
-        bottom: '100%',
-        borderLeft: '10px solid transparent',
-        borderRight: '10px solid transparent',
-        borderBottom: '15px solid grey',
-      });*/
 
       $(this)
         .find('.sub-menu.level-2')
         .each(function () {
           const $submenu = $(this);
-
           $submenu.css({ display: 'block' });
 
           const $submenuParent = $(this).closest('.sub-menu.level-1');
@@ -94,55 +79,28 @@ jQuery(document).ready(function ($) {
           }
         });
 
-      // $submenu.css({ display: 'none' });
-
       // Calculate the center X of the parent relative to the submenu
       const parentOffset = $submenuParent.offset().left;
       const submenuOffset = $submenu.offset().left;
       const parentWidth = $submenuParent.outerWidth();
-
       const centerX = parentOffset - submenuOffset + parentWidth / 2;
-
       const submenuId = $submenuParent.attr('id');
 
       const style = `
         <style data-submenu-style>
           li#${submenuId} .sub-menu.level-1::before {
-            position: absolute;
-            content: '';
-            bottom: 100%;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 12px solid white;
             left: ${centerX - 18}px;
-            z-index:2;
-           
           }
-
           li#${submenuId} .sub-menu.level-1::after {
-            position: absolute;
-            content: '';
-            bottom: 100%;
-            border-left: 14px solid transparent;
-            border-right: 14px solid transparent;
-            border-bottom: 16px solid rgba(0,0,0, 0.02);
-            z-index:1;
             left: ${centerX - 22}px;
-         
           }
-
-
-        
         </style>
       `;
       $('head').append(style);
     });
   }
 
-  // Run the adjustment once the page is fully loaded
   adjustSubMenuPosition();
-
-  // Recalculate submenu positions when the window is resized
   $(window).on('resize', adjustSubMenuPosition);
 
   function applyAnimateHover(selector, animationName) {
@@ -164,36 +122,5 @@ jQuery(document).ready(function ($) {
     });
   }
 
-  function applyHoverIntentAnimation(
-    parentSelector,
-    childSelector,
-    animationName
-  ) {
-    $(parentSelector).hoverIntent({
-      over: function () {
-        const target = $(this).find(childSelector);
-        target.removeClass(`animate__animated animate__${animationName}`);
-        void target[0].offsetWidth; // Force reflow
-        target.addClass(`animate__animated animate__${animationName}`);
-      },
-      out: function () {
-        const target = $(this).find(childSelector);
-        target.one(
-          'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
-          function () {
-            target.removeClass(`animate__animated animate__${animationName}`);
-          }
-        );
-      },
-      timeout: 150, // Adjust as needed (ms delay before `out`)
-    });
-  }
-
   applyAnimateHover('.site-logo', 'tada');
-
-  /*   applyHoverIntentAnimation(
-    'li.menu-item.menu-item-has-children',
-    'ul.sub-menu',
-    'slideInUp animate__faster'
-  ); */
 });
