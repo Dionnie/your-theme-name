@@ -221,7 +221,8 @@ ul.primary-navigation li.menu-item.level-0.mega-menu {
     top: unset !important;
 
     margin-top: $dropdown-gap !important;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.4);
+
     left: $mega-menu-padding;
     right: $mega-menu-padding;
     margin-left: $mega-menu-padding !important;
@@ -233,7 +234,8 @@ ul.primary-navigation li.menu-item.level-0.mega-menu {
 // 2nd level menu
 ul.primary-navigation ul.sub-menu.level-1 {
   background: white;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  box-shadow: 0px 3px 3px 0 rgba(0, 0, 0, 0.4);
+
   top: calc(100% + $dropdown-gap);
 
   /*   &::before {
