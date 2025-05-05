@@ -97,15 +97,15 @@ jQuery(document).ready(function ($) {
       let centerX = parentOffset - submenuOffset + parentWidth / 2;
 
       // Limit caret to within submenu width
-      const caretPadding = 40; // max caret distance from edge (matches your -22px)
+      const caretPadding = 30; // max caret distance from edge (matches your -22px)
+      const carettOffset = 10;
+
       centerX = Math.max(
         caretPadding,
         Math.min(centerX, submenuWidth - caretPadding)
       );
 
       const submenuId = $submenuParent.attr('id');
-
-      const carettOffset = 15;
 
       const style = `
         <style data-submenu-style>
