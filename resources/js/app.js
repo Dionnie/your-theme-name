@@ -27,8 +27,8 @@ jQuery(document).ready(function ($) {
    * Adjusts the position of each submenu inside `.primary-navigation` to prevent it
    * from overflowing off the viewport. Moves it left or adds padding as needed.
    */
+
   function adjustSubMenuPosition() {
-    $('style[data-submenu-style]').remove();
     $('ul.primary-navigation .sub-menu.level-1').each(function () {
       const $submenu = $(this);
       const $submenuParent = $submenu.parent('li.menu-item-has-children');
@@ -36,6 +36,7 @@ jQuery(document).ready(function ($) {
       // Reset position to default before recalculating
       $submenu.css({ left: '', right: '' });
       $submenu.removeClass('sub-menu-left-align');
+
       $submenu.css({ display: 'block' });
 
       const { overflowRight, overflowLeft, offset, width } =
@@ -78,21 +79,41 @@ jQuery(document).ready(function ($) {
             $submenuParent.toggleClass('sub-menu-left-align');
           }
         });
+    });
+  }
+
+  function adjustCarettPosition() {
+    $('style[data-submenu-style]').remove();
+    $('ul.primary-navigation .sub-menu.level-1').each(function () {
+      const $submenu = $(this);
+      const $submenuParent = $submenu.parent('li.menu-item-has-children');
 
       // Calculate the center X of the parent relative to the submenu
       const parentOffset = $submenuParent.offset().left;
       const submenuOffset = $submenu.offset().left;
       const parentWidth = $submenuParent.outerWidth();
-      const centerX = parentOffset - submenuOffset + parentWidth / 2;
+      const submenuWidth = $submenu.outerWidth();
+
+      let centerX = parentOffset - submenuOffset + parentWidth / 2;
+
+      // Limit caret to within submenu width
+      const caretPadding = 40; // max caret distance from edge (matches your -22px)
+      centerX = Math.max(
+        caretPadding,
+        Math.min(centerX, submenuWidth - caretPadding)
+      );
+
       const submenuId = $submenuParent.attr('id');
+
+      const carettOffset = 15;
 
       const style = `
         <style data-submenu-style>
           li#${submenuId} .sub-menu.level-1::before {
-            left: ${centerX - 18}px;
+            left: ${centerX - carettOffset - 4}px;
           }
           li#${submenuId} .sub-menu.level-1::after {
-            left: ${centerX - 22}px;
+            left: ${centerX - carettOffset - 8}px;
           }
         </style>
       `;
@@ -101,7 +122,11 @@ jQuery(document).ready(function ($) {
   }
 
   adjustSubMenuPosition();
-  $(window).on('resize', adjustSubMenuPosition);
+  adjustCarettPosition();
+  $(window).on('resize', () => {
+    adjustSubMenuPosition();
+    adjustCarettPosition();
+  });
 
   function applyAnimateHover(selector, animationName) {
     $(document).on('mouseenter', selector, function () {

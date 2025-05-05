@@ -197,10 +197,21 @@ add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $a
 add_shortcode('mega_menu', function ($atts) {
     ob_start();
 ?>
-    <div style=" background: #72081F !important; padding: 20px; margin: 20px;  color:white !important">
-        <h1 class="animate__animated animate__bounce">An animated element</h1>
 
+
+    <div class="mega-menuu" style="min-width: 320px;padding:20px;">
+        <div class="menu-content">
+            <div class="column">
+                <h4>Category 1</h4>
+                <h1 class="animate__animated animate__bounce">An animated element An animated element An animated element</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis inventore repellendus aliquam et consequuntur eaque quasi ipsum corrupti ducimus earum magnam qui, possimus dignissimos nulla atque minima optio. Beatae, temporibus!</p>
+            </div>
+            <!-- Add more columns if needed -->
+        </div>
     </div>
+
+
+
 <?php
     return ob_get_clean();
 });
