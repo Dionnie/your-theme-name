@@ -1,6 +1,13 @@
 //@use 'bootstrap/scss/bootstrap';
 @use 'animate.css';
-@use 'header.scss';
+
+$dropdown-gap: 34px;
+$mega-menu-padding: 20px;
+$menu-padding: 0px;
+$primary-color: #ff9520;
+
+@import 'mixins.scss';
+@import 'header.scss';
 
 * {
   box-sizing: border-box;
@@ -9,4 +16,28 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #72081f;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: white;
+  color: $primary-color;
+  font-weight: bold;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0;
+  &:focus {
+    z-index: 999;
+    top: 10px;
+    left: 10px;
+    border-radius: 0 !important;
+    box-shadow: 0 0 0 2px black;
+  }
 }

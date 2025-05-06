@@ -20,7 +20,7 @@ use App\Walkers\CustomNavWalker;
     </div>
     @if (has_nav_menu('primary_navigation'))
         <nav aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
-            <div class="shadow-dummy"></div>
+            <div class="shadow-header"></div>
             <div class="container">
 
                 <a href="<?php echo home_url(); ?>" class="site-logo">
@@ -43,6 +43,8 @@ use App\Walkers\CustomNavWalker;
                         'walker' => new App\Walkers\CustomNavWalker(),
                     ]) !!}
                 @endif
+
+                <p>Hello</p>
 
             </div>
         </nav>
