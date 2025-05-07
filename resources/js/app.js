@@ -110,10 +110,10 @@ jQuery(document).ready(function ($) {
       const style = `
         <style data-submenu-style>
           li#${submenuId} .sub-menu.level-1::before {
-            left: ${centerX - carettOffset - 4}px;
+            left: ${centerX - carettOffset}px;
           }
           li#${submenuId} .sub-menu.level-1::after {
-            left: ${centerX - carettOffset - 8}px;
+            left: ${centerX - carettOffset - 2}px;
           }
         </style>
       `;
@@ -148,4 +148,10 @@ jQuery(document).ready(function ($) {
   }
 
   applyAnimateHover('.site-logo', 'tada');
+
+  var $hamburger = $('.hamburger');
+  $hamburger.on('click', function (e) {
+    $hamburger.toggleClass('is-active');
+    // Do something else, like open/close menu
+  });
 });

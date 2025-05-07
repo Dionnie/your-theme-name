@@ -44,7 +44,12 @@ use App\Walkers\CustomNavWalker;
                     ]) !!}
                 @endif
 
-                <p>Hello</p>
+                <button class="hamburger hamburger--slider" type="button" aria-label="Menu" aria-controls="navigation">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+
 
             </div>
         </nav>

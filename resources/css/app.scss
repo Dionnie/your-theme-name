@@ -9,6 +9,8 @@ $primary-color: purple;
 @import 'mixins.scss';
 @import 'header.scss';
 
+@import 'components/hamburger';
+
 * {
   box-sizing: border-box;
 }

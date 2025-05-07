@@ -19,6 +19,13 @@ header {
   }
 }
 
+$hamburger-width: 30px;
+$hamburger-height: 18px;
+$line-height: 4px;
+$line-color: #000;
+$line-spacing: 18px;
+$transition-speed: 0.3s;
+
 .site-logo {
   text-decoration: none;
   box-shadow: none;
@@ -48,7 +55,7 @@ header {
 
 .container {
   background: whitesmoke;
-  // padding: 20px 20px;
+  padding: 0px 20px;
   display: flex;
   gap: 20px;
   align-items: center;
@@ -161,20 +168,16 @@ ul.primary-navigation ul.sub-menu.level-1 {
   left: unset;
   margin-top: $dropdown-gap !important;
   margin-right: $mega-menu-padding;
-
   &.sub-menu-left-align ul.sub-menu.level-2 {
     left: unset !important;
     right: calc(100% + $dropdown-gap);
     &::before {
-      position: absolute;
-      top: 0;
-      content: '';
-      right: -$dropdown-gap;
-      height: 100%;
-      content: '';
-      display: block;
-      width: $dropdown-gap;
-      background-color: transparent;
+      @include pseudo-spacer(
+        $top: 0,
+        $right: -$dropdown-gap,
+        $width: $dropdown-gap,
+        $height: 100%
+      );
     }
   }
 }
@@ -184,15 +187,11 @@ ul.primary-navigation ul.sub-menu.level-2 {
   top: 0;
   left: calc(100% + $dropdown-gap);
   &::after {
-    content: '';
-    position: absolute;
-    left: -$dropdown-gap;
-    top: 0;
-    z-index: 999;
-    height: 100%;
-    content: '';
-    display: block;
-    width: $dropdown-gap;
-    background-color: transparent;
+    @include pseudo-spacer(
+      $top: 0,
+      $left: -$dropdown-gap,
+      $width: $dropdown-gap,
+      $height: 100%
+    );
   }
 }

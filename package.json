@@ -26,6 +26,7 @@
     "@popperjs/core": "^2.11.8",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.5",
+    "hamburgers": "^1.2.1",
     "jquery": "^3.7.1"
   }
 }
