@@ -199,7 +199,7 @@ add_shortcode('mega_menu', function ($atts) {
 ?>
 
 
-    <div class="mega-menuu" style="min-width: 320px;max-width: 320px;padding:20px;">
+    <div class="mega-menuu" style="min-width: 320px;padding:20px;background-color:white">
         <div class="menu-content">
             <div class="column">
                 <h4>Category 1</h4>

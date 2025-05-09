@@ -29,12 +29,11 @@ jQuery(document).ready(function ($) {
    */
 
   function adjustSubMenuPosition() {
-    $('ul.primary-navigation .sub-menu.level-1').each(function () {
+    $('ul.primary-navigation.expanded .sub-menu.level-1').each(function () {
       const $submenu = $(this);
-      const $submenuParent = $submenu.parent('li.menu-item-has-children');
 
       // Reset position to default before recalculating
-      $submenu.css({ left: '', right: '' });
+      $submenu.css({ left: '', right: '', top: '', bottom: '' });
       $submenu.removeClass('sub-menu-left-align');
 
       $submenu.css({ display: 'block' });
@@ -84,7 +83,7 @@ jQuery(document).ready(function ($) {
 
   function adjustCarettPosition() {
     $('style[data-submenu-style]').remove();
-    $('ul.primary-navigation .sub-menu.level-1').each(function () {
+    $('ul.primary-navigation.expanded .sub-menu.level-1').each(function () {
       const $submenu = $(this);
       const $submenuParent = $submenu.parent('li.menu-item-has-children');
 
@@ -109,10 +108,10 @@ jQuery(document).ready(function ($) {
 
       const style = `
         <style data-submenu-style>
-          li#${submenuId} .sub-menu.level-1::before {
+        ul.primary-navigation.expanded li#${submenuId} .sub-menu.level-1::before {
             left: ${centerX - carettOffset}px;
           }
-          li#${submenuId} .sub-menu.level-1::after {
+          ul.primary-navigation.expanded li#${submenuId} .sub-menu.level-1::after {
             left: ${centerX - carettOffset - 2}px;
           }
         </style>
@@ -121,11 +120,29 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  const runTabletScripts = () => {
+    const isTablet = window.innerWidth >= 1024;
+
+    if (isTablet) {
+      $('ul.primary-navigation').addClass('expanded');
+      $('ul.primary-navigation').removeClass('collapsed');
+    } else {
+      $('ul.primary-navigation').removeClass('expanded');
+      $('ul.primary-navigation').addClass('collapsed');
+    }
+  };
+  let resizeTimer;
+  runTabletScripts();
   adjustSubMenuPosition();
   adjustCarettPosition();
-  $(window).on('resize', () => {
-    adjustSubMenuPosition();
-    adjustCarettPosition();
+
+  $(window).on('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      runTabletScripts();
+      adjustSubMenuPosition();
+      adjustCarettPosition();
+    }, 0); // Delay in milliseconds
   });
 
   function applyAnimateHover(selector, animationName) {

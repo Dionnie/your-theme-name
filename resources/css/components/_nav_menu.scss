@@ -1,0 +1,200 @@
+ul.primary-navigation,
+ul.primary-navigation ul.sub-menu {
+  all: unset;
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+ul.primary-navigation li.menu-item {
+  width: 100%;
+  & > a {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding: 1rem;
+    color: black;
+    text-decoration: none;
+    outline: none;
+    & > .menu-title,
+    & > .menu-description {
+      white-space: nowrap;
+    }
+  }
+
+  &.current_page_item,
+  &.current_page_ancestor {
+    & > a {
+      @include menu-active();
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    & > a {
+      @include menu-active();
+    }
+    & > .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      display: block;
+    }
+  }
+}
+
+ul.primary-navigation.expanded ul.sub-menu {
+  background-color: white;
+  transition: opacity 100ms ease-in;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+ul.primary-navigation.expanded {
+  gap: 1em;
+}
+
+ul.primary-navigation.expanded ul.sub-menu {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+ul.primary-navigation.expanded li.menu-item {
+  &.menu-item-has-children {
+    position: relative;
+    & {
+      > a > .menu-title {
+        &:after {
+          content: '';
+          border: 4px solid transparent;
+          border-top: 6px solid grey;
+          margin-left: 10px;
+          margin-bottom: 4px;
+          display: inline-block;
+          vertical-align: bottom;
+        }
+      }
+    }
+  }
+}
+
+ul.primary-navigation.expanded li.menu-item.level-0 {
+  position: initial;
+  &.menu-item-has-children {
+    border-bottom: $dropdown-gap solid transparent;
+    margin-bottom: -$dropdown-gap;
+  }
+  &.mega-menu {
+    position: initial;
+    & ul.sub-menu.level-1 {
+      position: absolute;
+      top: unset;
+      left: 50%;
+      margin-top: $dropdown-gap;
+      width: calc(100% - calc($mega-menu-padding * 2));
+      max-width: 1140px;
+      transform: translateX(-50%);
+      // left: $mega-menu-padding;
+      // right: $mega-menu-padding;
+      // width: 100%;
+      // max-width: min(1140px, 100%);
+    }
+  }
+}
+
+ul.primary-navigation.expanded ul.sub-menu.level-1 {
+  @include caret();
+  position: absolute;
+  left: unset;
+  margin-top: $dropdown-gap;
+  margin-right: $mega-menu-padding;
+  &.sub-menu-left-align ul.sub-menu.level-2 {
+    left: unset;
+    right: calc(100% + $dropdown-gap);
+    &::before {
+      @include pseudo-spacer(
+        $top: 0,
+        $right: -$dropdown-gap,
+        $width: $dropdown-gap,
+        $height: 100%
+      );
+    }
+  }
+}
+
+ul.primary-navigation.expanded ul.sub-menu.level-2 {
+  top: 0;
+  left: calc(100% + $dropdown-gap);
+  &::after {
+    @include pseudo-spacer(
+      $top: 0,
+      $left: -$dropdown-gap,
+      $width: $dropdown-gap,
+      $height: 100%
+    );
+  }
+}
+
+ul.primary-navigation.collapsed {
+  background-color: $primary-color-dark;
+  width: 100%;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+ul.primary-navigation.collapsed ul.sub-menu {
+  width: 100%;
+  display: none;
+  opacity: 0;
+  visibility: visible;
+  position: initial;
+  box-shadow: none;
+}
+
+ul.primary-navigation.collapsed li.menu-item {
+  & > a {
+    color: white;
+  }
+}
+
+ul.primary-navigation.collapsed li.menu-item.level-0 {
+  &.menu-item-has-children {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+  &.mega-menu {
+    & ul.sub-menu.level-1 {
+      position: initial;
+      margin-top: 0px;
+      width: 100%;
+      transform: translateX(0);
+    }
+  }
+}
+
+ul.primary-navigation.collapsed ul.sub-menu.level-1 {
+  position: initial;
+  left: 0;
+  margin-top: 0;
+  margin-right: 0;
+
+  & > li .menu-title,
+  & > li .menu-description {
+    margin-left: 20px;
+  }
+}
+
+ul.primary-navigation.collapsed ul.sub-menu.level-2 {
+  position: initial;
+  & > li .menu-title,
+  & > li .menu-description {
+    margin-left: 40px;
+  }
+}

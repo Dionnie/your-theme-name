@@ -1,0 +1,14 @@
+.page-header {
+  @include container-layout($min-height: 300px);
+  @include flex-container(
+    $direction: row,
+    $justify: space-between,
+    $align: center,
+    $wrap: wrap,
+    $gap-row: 20px,
+    $gap-column: 20px
+  );
+  padding: 1rem;
+  background: $secondary-color;
+  color: white;
+}

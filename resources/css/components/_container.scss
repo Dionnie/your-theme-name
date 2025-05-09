@@ -1,0 +1,41 @@
+// VARIABLES
+$container-max-width: 1140px;
+$gap-default: 20px;
+
+// MIXINS
+@mixin flex-container(
+  $direction: row,
+  $justify: flex-start,
+  $align: stretch,
+  $wrap: wrap,
+  $gap-row: $gap-default,
+  $gap-column: $gap-default
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+  row-gap: $gap-row;
+  column-gap: $gap-column;
+}
+
+@mixin container-layout($width: $container-max-width, $min-height: auto) {
+  max-width: $width;
+  min-height: $min-height;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-container {
+  @include container-layout($min-height: 100vh);
+  @include flex-container(
+    $direction: column,
+    $justify: space-between,
+    $align: center,
+    $wrap: wrap,
+    $gap-row: 20px,
+    $gap-column: 20px
+  );
+  padding: 1rem;
+}

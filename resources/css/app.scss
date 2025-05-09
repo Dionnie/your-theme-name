@@ -5,11 +5,19 @@ $dropdown-gap: 34px;
 $mega-menu-padding: 20px;
 $menu-padding: 0px;
 $primary-color: purple;
+$primary-color-dark: #550055;
+
+$secondary-color: orange;
 
 @import 'mixins.scss';
+@import 'utilities.scss';
+@import 'components/container';
 @import 'header.scss';
 
 @import 'components/hamburger';
+@import 'components/nav_menu';
+
+@import 'components/page_header';
 
 * {
   box-sizing: border-box;
