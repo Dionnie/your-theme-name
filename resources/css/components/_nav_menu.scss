@@ -44,15 +44,6 @@ ul.primary-navigation li.menu-item {
   }
 }
 
-ul.primary-navigation.expanded ul.sub-menu {
-  background-color: white;
-  transition: opacity 100ms ease-in;
-  position: absolute;
-  opacity: 0;
-  visibility: hidden;
-  display: none;
-}
-
 ul.primary-navigation.expanded {
   gap: 1em;
 }
@@ -153,7 +144,7 @@ ul.primary-navigation.collapsed ul.sub-menu {
   width: 100%;
   display: none;
   opacity: 0;
-  visibility: visible;
+  visibility: hidden;
   position: initial;
   box-shadow: none;
 }
@@ -186,15 +177,11 @@ ul.primary-navigation.collapsed ul.sub-menu.level-1 {
   margin-right: 0;
 
   & > li .menu-title,
-  & > li .menu-description {
+  & > li .menu-title {
     margin-left: 20px;
   }
 }
 
 ul.primary-navigation.collapsed ul.sub-menu.level-2 {
   position: initial;
-  & > li .menu-title,
-  & > li .menu-description {
-    margin-left: 40px;
-  }
 }

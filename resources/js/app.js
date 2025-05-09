@@ -77,7 +77,11 @@ jQuery(document).ready(function ($) {
           if (overflowRight) {
             $submenuParent.toggleClass('sub-menu-left-align');
           }
+
+          $submenu.css({ display: '' });
         });
+
+      $submenu.css({ display: '' });
     });
   }
 
@@ -142,7 +146,8 @@ jQuery(document).ready(function ($) {
       runTabletScripts();
       adjustSubMenuPosition();
       adjustCarettPosition();
-    }, 0); // Delay in milliseconds
+      alert('Resized');
+    }, 150); // Delay in milliseconds
   });
 
   function applyAnimateHover(selector, animationName) {
