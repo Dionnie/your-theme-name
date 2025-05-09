@@ -146,7 +146,6 @@ jQuery(document).ready(function ($) {
       runTabletScripts();
       adjustSubMenuPosition();
       adjustCarettPosition();
-      alert('Resized');
     }, 150); // Delay in milliseconds
   });
 

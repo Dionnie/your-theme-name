@@ -1,6 +1,5 @@
 ul.primary-navigation,
 ul.primary-navigation ul.sub-menu {
-  all: unset;
   list-style-type: none;
   display: flex;
   padding: 0;
@@ -49,6 +48,7 @@ ul.primary-navigation.expanded {
 }
 
 ul.primary-navigation.expanded ul.sub-menu {
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
   position: absolute;
   opacity: 0;
