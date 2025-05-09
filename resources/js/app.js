@@ -90,7 +90,7 @@ jQuery(document).ready(function ($) {
     $('ul.primary-navigation.expanded .sub-menu.level-1').each(function () {
       const $submenu = $(this);
       const $submenuParent = $submenu.parent('li.menu-item-has-children');
-
+      $submenu.css({ display: 'block' });
       // Calculate the center X of the parent relative to the submenu
       const parentOffset = $submenuParent.offset().left;
       const submenuOffset = $submenu.offset().left;
@@ -121,6 +121,7 @@ jQuery(document).ready(function ($) {
         </style>
       `;
       $('head').append(style);
+      $submenu.css({ display: '' });
     });
   }
 
@@ -146,7 +147,7 @@ jQuery(document).ready(function ($) {
       runTabletScripts();
       adjustSubMenuPosition();
       adjustCarettPosition();
-    }, 150); // Delay in milliseconds
+    }, 0); // Delay in milliseconds
   });
 
   function applyAnimateHover(selector, animationName) {
