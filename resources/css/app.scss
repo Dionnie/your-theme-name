@@ -51,3 +51,24 @@ body {
     box-shadow: 0 0 0 2px black;
   }
 }
+
+html,
+body,
+#app {
+  height: 100%;
+}
+body,
+#app {
+  display: flex;
+  flex-direction: column;
+}
+#main {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
+  background-color: $primary-color;
+  color: white;
+
+  text-align: center;
+}
