@@ -176,7 +176,7 @@ ul.primary-navigation.collapsed ul.sub-menu.level-1 {
   margin-top: 0;
   margin-right: 0;
   & > li .menu-title,
-  & > li .menu-title {
+  & > li .menu-description {
     margin-left: 20px;
   }
 }
@@ -184,7 +184,7 @@ ul.primary-navigation.collapsed ul.sub-menu.level-1 {
 ul.primary-navigation.collapsed ul.sub-menu.level-2 {
   position: initial;
   & > li .menu-title,
-  & > li .menu-title {
+  & > li .menu-description {
     margin-left: 40px;
   }
 }
