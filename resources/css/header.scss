@@ -19,6 +19,16 @@ header {
   }
 }
 
+@mixin menu-hover() {
+  background: $primary-color-dark;
+  cursor: pointer;
+  box-shadow: none;
+  color: white;
+  &:after {
+    border-top: 6px solid white;
+  }
+}
+
 $hamburger-width: 30px;
 $hamburger-height: 18px;
 $line-height: 4px;

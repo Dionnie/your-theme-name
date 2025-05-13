@@ -4,10 +4,10 @@
 $dropdown-gap: 34px;
 $mega-menu-padding: 20px;
 $menu-padding: 0px;
-$primary-color: purple;
-$primary-color-dark: #550055;
+$primary-color: #00749c;
+$primary-color-dark: #004d68;
 
-$secondary-color: orange;
+$secondary-color: #1f2937;
 
 @import 'mixins.scss';
 @import 'utilities.scss';
@@ -30,7 +30,7 @@ body {
 
 :focus {
   outline: none;
-  box-shadow: 0 0 0 3px #72081f;
+  box-shadow: 0 0 0 3px $primary-color-dark;
 }
 
 .skip-link {
@@ -67,7 +67,7 @@ body,
 }
 footer {
   flex-shrink: 0;
-  background-color: $primary-color;
+  background-color: $primary-color-dark;
   color: white;
 
   text-align: center;

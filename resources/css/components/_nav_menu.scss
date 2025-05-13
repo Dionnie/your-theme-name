@@ -10,15 +10,15 @@ ul.primary-navigation li.menu-item {
   width: 100%;
   & > a {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 8px;
     width: 100%;
     padding: 1rem;
     color: black;
     text-decoration: none;
     outline: none;
-    & > .menu-title,
-    & > .menu-description {
+    & .menu-title,
+    & .menu-description {
       white-space: nowrap;
     }
   }
@@ -30,15 +30,14 @@ ul.primary-navigation li.menu-item {
     }
   }
 
-  &:hover,
-  &:focus-within {
-    & > a {
-      @include menu-active();
-    }
-    & > .sub-menu {
-      opacity: 1;
-      visibility: visible;
-      display: block;
+  & .menu-dropdown-btn {
+    all: unset;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+
+    &:focus {
+      outline: 2px solid $primary-color;
     }
   }
 }
@@ -71,6 +70,26 @@ ul.primary-navigation.expanded li.menu-item {
           vertical-align: bottom;
         }
       }
+    }
+  }
+
+  &:hover {
+    & > .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      display: block;
+    }
+  }
+  &:hover,
+  &:focus-within {
+    & > a {
+      @include menu-hover();
+    }
+  }
+
+  &:focus {
+    & > a {
+      @include menu-active();
     }
   }
 }
@@ -151,6 +170,7 @@ ul.primary-navigation.collapsed ul.sub-menu {
 
 ul.primary-navigation.collapsed li.menu-item {
   & > a {
+    justify-content: space-between;
     color: white;
   }
 }

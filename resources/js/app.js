@@ -1,7 +1,18 @@
 import.meta.glob(['../images/**', '../fonts/**']);
 import 'bootstrap';
+import { css } from 'jquery';
 
 jQuery(document).ready(function ($) {
+  $('.menu-dropdown-btn').on('click', function (e) {
+    e.preventDefault();
+    $(this).css({ transform: 'rotate(' + 180 + 'deg)' });
+    $(this)
+      .closest('.menu-item')
+      .find('.sub-menu')
+      .first()
+      .css({ opacity: 1, visibility: 'visible', display: 'block' });
+  });
+
   const PADDING = 20; // Minimum distance from the edge of the screen
 
   /**
