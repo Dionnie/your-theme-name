@@ -170,6 +170,7 @@ ul.primary-navigation.collapsed ul.sub-menu {
 
 ul.primary-navigation.collapsed li.menu-item {
   & > a {
+    position: relative;
     justify-content: space-between;
     color: white;
   }
@@ -207,4 +208,15 @@ ul.primary-navigation.collapsed ul.sub-menu.level-2 {
   & > li .menu-description {
     margin-left: 40px;
   }
+}
+ul.primary-navigation.collapsed .menu-dropdown-btn {
+  position: absolute !important;
+  margin: auto !important;
+  top: 0 !important;
+  bottom: 0 !important;
+
+  right: 10px !important;
+  border-left: 2px solid $primary-color;
+  height: 30px !important;
+  width: 30px !important;
 }
