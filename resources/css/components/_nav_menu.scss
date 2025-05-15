@@ -36,11 +36,17 @@ ul.primary-navigation li.menu-item {
     width: 15px;
     height: 15px;
     &:focus {
-      outline: 2px solid $primary-color;
+      z-index: 1;
+      outline: 2px solid white;
     }
   }
 
   &.toggled-on {
+    & > a {
+      color: white;
+      background-color: $primary-color-dark;
+    }
+
     & > a > .menu-dropdown-btn {
       transform: rotate(180deg);
     }
@@ -48,6 +54,18 @@ ul.primary-navigation li.menu-item {
       opacity: 1;
       visibility: visible;
       display: block;
+    }
+  }
+
+  &:hover {
+    & > a {
+      @include menu-hover();
+    }
+  }
+
+  &:focus {
+    & > a {
+      @include menu-active();
     }
   }
 }
@@ -88,18 +106,6 @@ ul.primary-navigation.expanded li.menu-item {
       opacity: 1;
       visibility: visible;
       display: block;
-    }
-  }
-  &:hover,
-  &:focus-within {
-    & > a {
-      @include menu-hover();
-    }
-  }
-
-  &:focus {
-    & > a {
-      @include menu-active();
     }
   }
 }
@@ -229,12 +235,24 @@ ul.primary-navigation.collapsed ul.sub-menu.level-2 {
   }
 }
 ul.primary-navigation.collapsed .menu-dropdown-btn {
+  background-color: transparent !important;
   position: absolute !important;
-  margin: auto !important;
-  top: 0 !important;
+
+  top: 5px !important;
   bottom: 0 !important;
   right: 10px !important;
   border-left: 2px solid $primary-color;
-  height: 25px !important;
-  width: 25px !important;
+  height: 40px !important;
+  width: 40px !important;
+  text-align: center;
+
+  &:focus {
+    z-index: 1;
+    outline: 2px solid white !important;
+  }
+
+  & svg {
+    margin-bottom: -5px;
+    transform: scale(0.8);
+  }
 }

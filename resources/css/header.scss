@@ -20,7 +20,7 @@ header {
 }
 
 @mixin menu-hover() {
-  background: $primary-color-dark;
+  background: $primary-color;
   cursor: pointer;
   box-shadow: none;
   color: white;
