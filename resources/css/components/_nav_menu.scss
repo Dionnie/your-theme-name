@@ -35,9 +35,19 @@ ul.primary-navigation li.menu-item {
     cursor: pointer;
     width: 15px;
     height: 15px;
-
     &:focus {
       outline: 2px solid $primary-color;
+    }
+  }
+
+  &.toggled-on {
+    & > a > .menu-dropdown-btn {
+      transform: rotate(180deg);
+    }
+    & > .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      display: block;
     }
   }
 }
@@ -152,11 +162,14 @@ ul.primary-navigation.expanded ul.sub-menu.level-2 {
 }
 
 ul.primary-navigation.collapsed {
-  background-color: $primary-color-dark;
+  //background-color: $primary-color-dark;
+  background-color: #003345;
   width: 100%;
   flex-direction: column;
   gap: 0;
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 ul.primary-navigation.collapsed ul.sub-menu {
@@ -173,6 +186,12 @@ ul.primary-navigation.collapsed li.menu-item {
     position: relative;
     justify-content: space-between;
     color: white;
+  }
+
+  &:hover {
+    & > a {
+      @include menu-hover();
+    }
   }
 }
 
@@ -214,9 +233,8 @@ ul.primary-navigation.collapsed .menu-dropdown-btn {
   margin: auto !important;
   top: 0 !important;
   bottom: 0 !important;
-
   right: 10px !important;
   border-left: 2px solid $primary-color;
-  height: 30px !important;
-  width: 30px !important;
+  height: 25px !important;
+  width: 25px !important;
 }

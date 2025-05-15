@@ -3,29 +3,45 @@ import 'bootstrap';
 import { css } from 'jquery';
 
 jQuery(document).ready(function ($) {
+  function applyAnimateHover(selector, animationName) {
+    $(document).on('mouseenter', selector, function () {
+      const el = $(this);
+      el.removeClass(`animate__animated animate__${animationName}`);
+      void el[0].offsetWidth; // Reflow
+      el.addClass(`animate__animated animate__${animationName}`);
+    });
+
+    $(document).on('mouseleave', selector, function () {
+      const el = $(this);
+      el.one(
+        'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
+        function () {
+          el.removeClass(`animate__animated animate__${animationName}`);
+        }
+      );
+    });
+  }
+
   $('.menu-dropdown-btn').on('click', function (e) {
     e.preventDefault();
-    $(this).css({ transform: 'rotate(' + 180 + 'deg)' });
-    $(this)
-      .closest('.menu-item')
-      .find('.sub-menu')
-      .first()
-      .css({ opacity: 1, visibility: 'visible', display: 'block' });
+    e.stopPropagation();
+
+    $('.menu-dropdown-btn')
+      .not(this)
+      .each(function () {
+        $(this).closest('.menu-item').removeClass('toggled-on');
+      });
+
+    $(this).closest('.menu-item').parents('li').addClass('toggled-on');
+    $(this).closest('.menu-item').toggleClass('toggled-on');
   });
 
-  const PADDING = 20; // Minimum distance from the edge of the screen
+  const PADDING = 20;
 
-  /**
-   * Checks whether a given element is overflowing off the left or right side of the viewport.
-   * @param {jQuery} $element - The jQuery-wrapped element to check.
-   * @param {number} padding - Optional padding to maintain from edges.
-   * @returns {Object} - Information about overflow and element offset.
-   */
   function isElementOverflowing($element, padding = PADDING) {
     const offset = $element.offset(); // Distance from top-left of the page
     const width = $element.outerWidth(); // Full width including padding/border
     const windowWidth = $(window).width(); // Viewport width
-
     return {
       overflowRight: offset.left + width + padding > windowWidth,
       overflowLeft: offset.left - padding < 0,
@@ -34,11 +50,6 @@ jQuery(document).ready(function ($) {
     };
   }
 
-  /**
-   * Adjusts the position of each submenu inside `.primary-navigation` to prevent it
-   * from overflowing off the viewport. Moves it left or adds padding as needed.
-   */
-
   function adjustSubMenuPosition() {
     $('ul.primary-navigation.expanded .sub-menu.level-1').each(function () {
       const $submenu = $(this);
@@ -46,7 +57,6 @@ jQuery(document).ready(function ($) {
       // Reset position to default before recalculating
       $submenu.css({ left: '', right: '', top: '', bottom: '' });
       $submenu.removeClass('sub-menu-left-align');
-
       $submenu.css({ display: 'block' });
 
       const { overflowRight, overflowLeft, offset, width } =
@@ -158,27 +168,8 @@ jQuery(document).ready(function ($) {
       runTabletScripts();
       adjustSubMenuPosition();
       adjustCarettPosition();
-    }, 0); // Delay in milliseconds
+    }, 0);
   });
-
-  function applyAnimateHover(selector, animationName) {
-    $(document).on('mouseenter', selector, function () {
-      const el = $(this);
-      el.removeClass(`animate__animated animate__${animationName}`);
-      void el[0].offsetWidth; // Reflow
-      el.addClass(`animate__animated animate__${animationName}`);
-    });
-
-    $(document).on('mouseleave', selector, function () {
-      const el = $(this);
-      el.one(
-        'animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd',
-        function () {
-          el.removeClass(`animate__animated animate__${animationName}`);
-        }
-      );
-    });
-  }
 
   applyAnimateHover('.site-logo', 'tada');
 
