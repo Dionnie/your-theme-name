@@ -1,6 +1,5 @@
 import.meta.glob(['../images/**', '../fonts/**']);
 import 'bootstrap';
-import { css } from 'jquery';
 
 jQuery(document).ready(function ($) {
   function applyAnimateHover(selector, animationName) {

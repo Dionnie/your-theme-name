@@ -9,33 +9,6 @@ header {
   font-weight: 700;
 }
 
-@mixin menu-active() {
-  background: $primary-color;
-  cursor: pointer;
-  box-shadow: none;
-  color: white;
-  &:after {
-    border-top: 6px solid white;
-  }
-}
-
-@mixin menu-hover() {
-  background: $primary-color;
-  cursor: pointer;
-  box-shadow: none;
-  color: white;
-  &:after {
-    border-top: 6px solid white;
-  }
-}
-
-$hamburger-width: 30px;
-$hamburger-height: 18px;
-$line-height: 4px;
-$line-color: #000;
-$line-spacing: 18px;
-$transition-speed: 0.3s;
-
 .site-logo {
   text-decoration: none;
   box-shadow: none;

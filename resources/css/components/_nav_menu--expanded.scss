@@ -1,0 +1,96 @@
+ul.primary-navigation.expanded {
+  gap: 1em;
+}
+
+ul.primary-navigation.expanded ul.sub-menu {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+ul.primary-navigation.expanded li.menu-item {
+  &.menu-item-has-children {
+    position: relative;
+    & {
+      > a > .menu-title {
+        &:after {
+          content: '';
+          border: 4px solid transparent;
+          border-top: 6px solid grey;
+          margin-left: 10px;
+          margin-bottom: 4px;
+          display: inline-block;
+          vertical-align: bottom;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    & > .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      display: block;
+    }
+  }
+}
+
+ul.primary-navigation.expanded li.menu-item.level-0 {
+  position: initial;
+  &.menu-item-has-children {
+    border-bottom: $dropdown-gap solid transparent;
+    margin-bottom: -$dropdown-gap;
+  }
+  &.mega-menu {
+    position: initial;
+    & ul.sub-menu.level-1 {
+      position: absolute;
+      top: unset;
+      left: 50%;
+      margin-top: $dropdown-gap;
+      width: calc(100% - calc($mega-menu-padding * 2));
+      max-width: 1140px;
+      transform: translateX(-50%);
+      // left: $mega-menu-padding;
+      // right: $mega-menu-padding;
+      // width: 100%;
+      // max-width: min(1140px, 100%);
+    }
+  }
+}
+
+ul.primary-navigation.expanded ul.sub-menu.level-1 {
+  @include caret();
+  position: absolute;
+  left: unset;
+  margin-top: $dropdown-gap;
+  margin-right: $mega-menu-padding;
+  &.sub-menu-left-align ul.sub-menu.level-2 {
+    left: unset;
+    right: calc(100% + $dropdown-gap);
+    &::before {
+      @include pseudo-spacer(
+        $top: 0,
+        $right: -$dropdown-gap,
+        $width: $dropdown-gap,
+        $height: 100%
+      );
+    }
+  }
+}
+
+ul.primary-navigation.expanded ul.sub-menu.level-2 {
+  top: 0;
+  left: calc(100% + $dropdown-gap);
+  &::after {
+    @include pseudo-spacer(
+      $top: 0,
+      $left: -$dropdown-gap,
+      $width: $dropdown-gap,
+      $height: 100%
+    );
+  }
+}

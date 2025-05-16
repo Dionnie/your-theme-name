@@ -6,9 +6,7 @@
 
 @section('content')
     @include('partials.page-header')
-    <div>
-        TEST
-    </div>
+    @include('partials.content-page')
 @endsection
 
 
