@@ -2,6 +2,7 @@
   & {
     padding: 1rem;
     color: black;
+    border-radius: 4px;
   }
 }
 
@@ -25,8 +26,12 @@ ul.primary-navigation,
 ul.primary-navigation ul.sub-menu {
   list-style-type: none;
   display: flex;
-  padding: 0;
+  padding: 0px;
   margin: 0;
+}
+
+ul.primary-navigation {
+  padding: 8px;
 }
 
 ul.primary-navigation li.menu-item {
@@ -74,6 +79,9 @@ ul.primary-navigation li.menu-item {
     }
     & > .sub-menu {
       @include show(true);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
   }
 

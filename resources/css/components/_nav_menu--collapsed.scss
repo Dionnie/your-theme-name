@@ -1,8 +1,9 @@
 ul.primary-navigation.collapsed {
   background-color: #003345;
   width: 100%;
+  display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 4px;
   position: fixed;
   left: 0;
   top: 0;
@@ -65,15 +66,16 @@ ul.primary-navigation.collapsed ul.sub-menu.level-2 {
   }
 }
 ul.primary-navigation.collapsed .menu-dropdown-btn {
+  border-left: 2px solid $primary-color;
   background-color: transparent !important;
   position: absolute !important;
 
-  top: 5px !important;
+  top: 10px !important;
   bottom: 0 !important;
   right: 10px !important;
-  border-left: 2px solid $primary-color;
-  height: 40px !important;
-  width: 40px !important;
+
+  height: 30px !important;
+  width: 30px !important;
   text-align: center;
 
   &:focus {
