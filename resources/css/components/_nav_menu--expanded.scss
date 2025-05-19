@@ -6,9 +6,7 @@ ul.primary-navigation.expanded ul.sub-menu {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
   position: absolute;
-  opacity: 0;
-  visibility: hidden;
-  display: none;
+  @include show(false);
 }
 
 ul.primary-navigation.expanded li.menu-item {
@@ -30,10 +28,12 @@ ul.primary-navigation.expanded li.menu-item {
   }
 
   &:hover {
+    & > a {
+      @include menu-hover();
+    }
+
     & > .sub-menu {
-      opacity: 1;
-      visibility: visible;
-      display: block;
+      @include show(true);
     }
   }
 }

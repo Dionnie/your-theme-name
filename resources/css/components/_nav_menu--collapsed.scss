@@ -24,7 +24,7 @@ ul.primary-navigation.collapsed li.menu-item {
     color: white;
   }
 
-  &:hover {
+  &:not(:has(li.menu-item:hover)):hover {
     & > a {
       @include menu-hover();
     }

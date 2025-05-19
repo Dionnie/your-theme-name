@@ -1,10 +1,7 @@
-@mixin menu-active() {
-  background: $primary-color;
-  cursor: pointer;
-  box-shadow: none;
-  color: white;
-  &:after {
-    border-top: 6px solid white;
+@mixin menu-normal() {
+  & {
+    padding: 1rem;
+    color: black;
   }
 }
 
@@ -13,8 +10,14 @@
   cursor: pointer;
   box-shadow: none;
   color: white;
-  &:after {
-    border-top: 6px solid white;
+}
+
+@mixin menu-active() {
+  & {
+    background: $primary-color;
+    cursor: pointer;
+    box-shadow: none;
+    color: white;
   }
 }
 
@@ -29,17 +32,21 @@ ul.primary-navigation ul.sub-menu {
 ul.primary-navigation li.menu-item {
   width: 100%;
   & > a {
+    @include menu-normal();
+    gap: 8px;
     display: flex;
     flex-direction: row;
-    gap: 8px;
-    width: 100%;
-    padding: 1rem;
-    color: black;
     text-decoration: none;
     outline: none;
-    & .menu-title,
-    & .menu-description {
-      white-space: nowrap;
+    white-space: nowrap;
+    & .link-content {
+      gap: 8px;
+      display: flex;
+      flex-direction: column;
+      & .menu-title,
+      & .menu-description {
+        white-space: nowrap;
+      }
     }
   }
 
@@ -52,9 +59,9 @@ ul.primary-navigation li.menu-item {
 
   & .menu-dropdown-btn {
     all: unset;
-    cursor: pointer;
     width: 15px;
     height: 15px;
+    cursor: pointer;
     &:focus {
       z-index: 1;
       outline: 2px solid white;
@@ -62,24 +69,11 @@ ul.primary-navigation li.menu-item {
   }
 
   &.toggled-on {
-    & > a {
-      color: white;
-      background-color: $primary-color-dark;
-    }
-
     & > a > .menu-dropdown-btn {
       transform: rotate(180deg);
     }
     & > .sub-menu {
-      opacity: 1;
-      visibility: visible;
-      display: block;
-    }
-  }
-
-  &:hover {
-    & > a {
-      @include menu-hover();
+      @include show(true);
     }
   }
 
