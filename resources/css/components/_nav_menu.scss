@@ -2,7 +2,6 @@
   & {
     padding: 1rem;
     color: black;
-    border-radius: 4px;
   }
 }
 
@@ -32,15 +31,21 @@ ul.primary-navigation ul.sub-menu {
 
 ul.primary-navigation {
   padding: 8px;
+  flex-direction: row;
+}
+
+ul.primary-navigation ul.sub-menu {
+  flex-direction: column;
 }
 
 ul.primary-navigation li.menu-item {
   width: 100%;
   & > a {
     @include menu-normal();
-    gap: 8px;
+
     display: flex;
     flex-direction: row;
+    gap: 8px;
     text-decoration: none;
     outline: none;
     white-space: nowrap;
@@ -55,8 +60,9 @@ ul.primary-navigation li.menu-item {
     }
   }
 
-  &.current_page_item,
-  &.current_page_ancestor {
+  &.current_page_item
+ // &.current_page_ancestor
+  {
     & > a {
       @include menu-active();
     }
@@ -78,10 +84,9 @@ ul.primary-navigation li.menu-item {
       transform: rotate(180deg);
     }
     & > .sub-menu {
-      @include show(true);
+      opacity: 1;
+      visibility: visible;
       display: flex;
-      flex-direction: column;
-      gap: 8px;
     }
   }
 
