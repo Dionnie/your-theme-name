@@ -155,15 +155,15 @@ jQuery(document).ready(function ($) {
       $('ul.primary-navigation').removeClass('expanded');
       $('ul.primary-navigation').addClass('collapsed');
     }
-
-    $('ul.primary-navigation.collapsed')
-      .find('.current_page_ancestor')
-      .toggleClass('toggled-on');
   };
   let resizeTimer;
   runTabletScripts();
   adjustSubMenuPosition();
   adjustCarettPosition();
+
+  $('ul.primary-navigation.collapsed')
+    .find('.current_page_ancestor')
+    .toggleClass('toggled-on');
 
   $(window).on('resize', function () {
     clearTimeout(resizeTimer);
