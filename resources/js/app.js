@@ -146,14 +146,19 @@ jQuery(document).ready(function ($) {
   }
 
   const runTabletScripts = () => {
-    const isTablet = window.innerWidth >= 1024;
+    const isTablet = window.innerWidth >= 1120;
 
     if (isTablet) {
       $('ul.primary-navigation').addClass('expanded');
       $('ul.primary-navigation').removeClass('collapsed');
+      $('ul.primary-navigation').show();
+      $('.hamburger').hide();
+      $hamburger.removeClass('is-active');
     } else {
       $('ul.primary-navigation').removeClass('expanded');
       $('ul.primary-navigation').addClass('collapsed');
+      $('ul.primary-navigation').hide();
+      $('.hamburger').show();
     }
   };
   let resizeTimer;
@@ -179,6 +184,6 @@ jQuery(document).ready(function ($) {
   var $hamburger = $('.hamburger');
   $hamburger.on('click', function (e) {
     $hamburger.toggleClass('is-active');
-    // Do something else, like open/close menu
+    $('ul.primary-navigation').toggle();
   });
 });
