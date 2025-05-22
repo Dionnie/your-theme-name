@@ -1,8 +1,8 @@
 @mixin menu-normal() {
-  & {
-    padding: 1rem;
-    color: black;
-  }
+  transition: background-color 0.5s ease;
+  padding: 1rem;
+  color: black;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 @mixin menu-hover() {
@@ -13,88 +13,14 @@
 }
 
 @mixin menu-active() {
-  & {
-    background: $primary-color;
-    cursor: pointer;
-    box-shadow: none;
-    color: white;
-  }
+  background: $primary-color;
+  cursor: pointer;
+  box-shadow: none;
+  color: white;
 }
 
-ul.primary-navigation,
-ul.primary-navigation ul.sub-menu {
-  list-style-type: none;
+.menu-wrapper {
   display: flex;
-  padding: 0px;
-  margin: 0;
-}
-
-ul.primary-navigation {
-  padding: 8px;
-  flex-direction: row;
-}
-
-ul.primary-navigation ul.sub-menu {
-  flex-direction: column;
-}
-
-ul.primary-navigation li.menu-item {
-  width: 100%;
-  & > a {
-    @include menu-normal();
-
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    text-decoration: none;
-    outline: none;
-    white-space: nowrap;
-    & .link-content {
-      gap: 8px;
-      display: flex;
-      flex-direction: column;
-      & .menu-title,
-      & .menu-description {
-        white-space: nowrap;
-      }
-    }
-  }
-
-  &.current_page_item
- // &.current_page_ancestor
-  {
-    & > a {
-      @include menu-active();
-    }
-  }
-
-  & .menu-dropdown-btn {
-    all: unset;
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
-    &:focus {
-      z-index: 1;
-      outline: 2px solid white;
-    }
-  }
-
-  &.toggled-on {
-    & > a > .menu-dropdown-btn {
-      transform: rotate(180deg);
-    }
-    & > .sub-menu {
-      opacity: 1;
-      visibility: visible;
-      display: flex;
-    }
-  }
-
-  &:focus {
-    & > a {
-      @include menu-active();
-    }
-  }
 }
 
 @import 'nav_menu--expanded';

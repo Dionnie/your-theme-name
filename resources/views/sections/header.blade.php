@@ -42,16 +42,20 @@ use App\Walkers\CustomNavWalker;
                         'container' => false,
                         'walker' => new App\Walkers\CustomNavWalker(),
                     ]) !!}
+
+
+                    <button class="hamburger hamburger--slider" type="button" aria-label="Menu"
+                        aria-controls="navigation">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
                 @endif
 
 
-
-                <button class="hamburger hamburger--slider" type="button" aria-label="Menu" aria-controls="navigation">
-                    <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
-                    </span>
-                </button>
-
+                {{-- 
+           
+ --}}
 
             </div>
         </nav>

@@ -25,15 +25,3 @@ $largeScreen: 1400px;
     @warn "Unknown media type `#{$media}` passed to respondTo() mixin.";
   }
 }
-
-@mixin show($enable) {
-  @if $enable == true {
-    opacity: 1;
-    visibility: visible;
-    display: block;
-  } @else {
-    opacity: 0;
-    visibility: hidden;
-    display: none;
-  }
-}
