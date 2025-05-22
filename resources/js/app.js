@@ -153,7 +153,7 @@ jQuery(document).ready(function ($) {
       $('ul.primary-navigation').removeClass('collapsed');
       $('ul.primary-navigation').show();
       $('.hamburger').hide();
-      $hamburger.removeClass('is-active');
+      $('.hamburger').removeClass('is-active');
     } else {
       $('ul.primary-navigation').removeClass('expanded');
       $('ul.primary-navigation').addClass('collapsed');
