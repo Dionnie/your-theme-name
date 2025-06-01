@@ -23,5 +23,25 @@
   display: flex;
 }
 
+ul.primary-navigation.expanded {
+  width: initial;
+  visibility: visible;
+}
+
+.hamburger {
+  display: none;
+}
+
 @import 'nav_menu--expanded';
 @import 'nav_menu--collapsed';
+
+@media only screen and (max-width: 1180px) {
+  ul.primary-navigation.expanded {
+    width: 0px;
+    visibility: hidden;
+  }
+
+  .hamburger {
+    display: initial;
+  }
+}

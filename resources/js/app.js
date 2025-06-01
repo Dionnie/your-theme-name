@@ -146,9 +146,15 @@ jQuery(document).ready(function ($) {
   }
 
   const runTabletScripts = () => {
-    const isTablet = window.innerWidth >= 1120;
+    const isTablet = window.innerWidth >= 1180;
 
     if (isTablet) {
+      $('.hamburger').removeClass('is-active');
+
+      $('ul.primary-navigation.collapsed').addClass('hidden');
+    }
+
+    /*    if (isTablet) {
       $('ul.primary-navigation').addClass('expanded');
       $('ul.primary-navigation').removeClass('collapsed');
       $('ul.primary-navigation').show();
@@ -159,7 +165,7 @@ jQuery(document).ready(function ($) {
       $('ul.primary-navigation').addClass('collapsed');
       $('ul.primary-navigation').hide();
       $('.hamburger').show();
-    }
+    } */
   };
   let resizeTimer;
   runTabletScripts();
@@ -184,6 +190,6 @@ jQuery(document).ready(function ($) {
   var $hamburger = $('.hamburger');
   $hamburger.on('click', function (e) {
     $hamburger.toggleClass('is-active');
-    $('ul.primary-navigation').toggle();
+    $('ul.primary-navigation.collapsed').toggleClass('hidden');
   });
 });

@@ -21,7 +21,7 @@ use App\Walkers\CustomNavWalker;
     @if (has_nav_menu('primary_navigation'))
         <nav id="navigation" aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}">
             <div class="shadow-header"></div>
-            <div class="container">
+            <div class="containerr">
 
                 <a href="<?php echo home_url(); ?>" class="site-logo">
                     <?php
@@ -42,6 +42,15 @@ use App\Walkers\CustomNavWalker;
                         'container' => false,
                         'walker' => new App\Walkers\CustomNavWalker(),
                     ]) !!}
+
+
+                    {!! wp_nav_menu([
+                        'theme_location' => 'primary_navigation',
+                        'menu_class' => 'primary-navigation collapsed hidden',
+                        'container' => false,
+                        'walker' => new App\Walkers\CustomNavWalker(),
+                    ]) !!}
+
 
 
                     <button class="hamburger hamburger--slider" type="button" aria-label="Menu"
