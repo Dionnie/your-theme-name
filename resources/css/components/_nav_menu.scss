@@ -24,11 +24,10 @@
 }
 
 ul.primary-navigation.expanded {
-  width: initial;
-  visibility: visible;
+  display: flex;
 }
 
-.hamburger {
+.primary-navigation-hamburger {
   display: none;
 }
 
@@ -37,11 +36,10 @@ ul.primary-navigation.expanded {
 
 @media only screen and (max-width: 1180px) {
   ul.primary-navigation.expanded {
-    width: 0px;
-    visibility: hidden;
+    display: none;
   }
 
-  .hamburger {
+  .primary-navigation-hamburger {
     display: initial;
   }
 }

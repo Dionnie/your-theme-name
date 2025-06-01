@@ -149,22 +149,26 @@ jQuery(document).ready(function ($) {
     const isTablet = window.innerWidth >= 1180;
 
     if (isTablet) {
-      $('.hamburger').removeClass('is-active');
+      $('.primary-navigation-hamburger').removeClass('is-active');
 
       $('ul.primary-navigation.collapsed').addClass('hidden');
+    } else {
+      $('ul.primary-navigation.expanded li.menu-item').each(function () {
+        $(this).removeClass('toggled-on');
+      });
     }
 
     /*    if (isTablet) {
       $('ul.primary-navigation').addClass('expanded');
       $('ul.primary-navigation').removeClass('collapsed');
       $('ul.primary-navigation').show();
-      $('.hamburger').hide();
-      $('.hamburger').removeClass('is-active');
+      $('.primary-navigation-hamburger').hide();
+      $('.primary-navigation-hamburger').removeClass('is-active');
     } else {
       $('ul.primary-navigation').removeClass('expanded');
       $('ul.primary-navigation').addClass('collapsed');
       $('ul.primary-navigation').hide();
-      $('.hamburger').show();
+      $('.primary-navigation-hamburger').show();
     } */
   };
   let resizeTimer;
@@ -187,7 +191,7 @@ jQuery(document).ready(function ($) {
 
   applyAnimateHover('.site-logo', 'tada');
 
-  var $hamburger = $('.hamburger');
+  var $hamburger = $('.primary-navigation-hamburger');
   $hamburger.on('click', function (e) {
     $hamburger.toggleClass('is-active');
     $('ul.primary-navigation.collapsed').toggleClass('hidden');

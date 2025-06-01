@@ -53,7 +53,7 @@ use App\Walkers\CustomNavWalker;
 
 
 
-                    <button class="hamburger hamburger--slider" type="button" aria-label="Menu"
+                    <button class="primary-navigation-hamburger hamburger--slider" type="button" aria-label="Menu"
                         aria-controls="navigation">
                         <span class="hamburger-box">
                             <span class="hamburger-inner"></span>
