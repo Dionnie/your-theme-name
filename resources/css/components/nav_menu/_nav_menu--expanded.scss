@@ -1,3 +1,6 @@
+@use 'mixins';
+@use 'variables';
+
 ul.primary-navigation.expanded {
   display: flex;
   flex-direction: row;
@@ -47,7 +50,7 @@ ul.primary-navigation.expanded li.menu-item {
   &.current_page_item,
   &.current_page_ancestor {
     & > a {
-      @include menu-active();
+      @include mixins.menu-active();
     }
   }
 
@@ -61,7 +64,7 @@ ul.primary-navigation.expanded li.menu-item {
 }
 
 ul.primary-navigation.expanded li.menu-item > a {
-  @include menu-normal();
+  @include mixins.menu-normal();
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -72,7 +75,7 @@ ul.primary-navigation.expanded li.menu-item > a {
   &:hover,
   &:focus,
   &:has(.menu-dropdown-btn:focus) {
-    @include menu-active();
+    @include mixins.menu-active();
   }
 
   & .link-content {
@@ -88,7 +91,7 @@ ul.primary-navigation.expanded li.menu-item > a {
 
 ul.primary-navigation.expanded li.menu-item.toggled-on {
   & > a {
-    @include menu-active();
+    @include mixins.menu-active();
   }
 
   & > a > .menu-dropdown-btn svg {
@@ -126,14 +129,14 @@ ul.primary-navigation.expanded li.menu-item > a .menu-dropdown-btn {
 ul.primary-navigation.expanded li.menu-item.level-0 {
   position: initial;
   &.menu-item-has-children:hover {
-    border-bottom: $dropdown-gap solid transparent;
-    margin-bottom: -$dropdown-gap;
+    border-bottom: variables.$dropdown-gap solid transparent;
+    margin-bottom: -(variables.$dropdown-gap);
   }
   &.mega-menu {
     position: initial;
     & ul.sub-menu.level-1 {
       position: absolute;
-      margin-top: $dropdown-gap;
+      margin-top: variables.$dropdown-gap;
       top: unset;
       left: 20px;
       right: 20px;
@@ -145,20 +148,20 @@ ul.primary-navigation.expanded li.menu-item.level-0 {
 }
 
 ul.primary-navigation.expanded ul.sub-menu.level-1 {
-  @include caret();
+  @include mixins.caret();
   position: absolute;
   left: unset;
-  margin-top: $dropdown-gap;
-  margin-right: $mega-menu-padding;
+  margin-top: variables.$dropdown-gap;
+  margin-right: variables.$mega-menu-padding;
   &.sub-menu-left-align ul.sub-menu.level-2 {
     left: unset;
     right: 100%;
-    /*     right: calc(100% + $dropdown-gap);
+    /*     right: calc(100% + variables.$dropdown-gap);
     &::before {
       @include pseudo-spacer(
         $top: 0,
-        $right: -$dropdown-gap,
-        $width: $dropdown-gap,
+        $right: -variables.$dropdown-gap,
+        $width: variables.$dropdown-gap,
         $height: 100%
       );
     } */
@@ -168,12 +171,12 @@ ul.primary-navigation.expanded ul.sub-menu.level-1 {
 ul.primary-navigation.expanded ul.sub-menu.level-2 {
   top: 0;
   left: calc(100%);
-  /*   left: calc(100% + $dropdown-gap);
+  /*   left: calc(100% + variables.$dropdown-gap);
   &::after {
     @include pseudo-spacer(
       $top: 0,
-      $left: -$dropdown-gap,
-      $width: $dropdown-gap,
+      $left: -variables.$dropdown-gap,
+      $width: variables.$dropdown-gap,
       $height: 100%
     );
   } */

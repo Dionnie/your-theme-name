@@ -1,43 +1,93 @@
-/* https://jonsuh.com/hamburgers */
+@use '../base';
 
-$hamburger-layer-width: 25px !default;
-$hamburger-layer-height: 2px !default;
-$hamburger-layer-spacing: 6px !default;
-$hamburger-layer-color: #000 !default;
-$hamburger-layer-border-radius: 4px !default;
-$hamburger-hover-opacity: 0.7 !default;
+// https://codepen.io/designcouch/pen/ExvwPY
 
-@import 'hamburgers/_sass/hamburgers/hamburgers';
+#nav-icon1,
+#nav-icon2,
+#nav-icon3,
+#nav-icon4 {
+  width: 60px;
+  height: 45px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
 
-.primary-navigation-hamburger {
-  padding: 10px;
-  transition: background-color 0s ease-in-out;
-  background-color: #c6dfe9;
-  & .hamburger-box {
-    height: 18px;
-    margin-bottom: -4px;
-  }
+#nav-icon1 span,
+#nav-icon3 span,
+#nav-icon4 span {
+  display: block;
+  position: absolute;
+  height: 9px;
+  width: 100%;
+  background: base.$colors-primary;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.15s ease-in-out;
+  -moz-transition: 0.15s ease-in-out;
+  -o-transition: 0.15s ease-in-out;
+  transition: 0.15s ease-in-out;
+}
 
-  &:hover {
-    & {
-      background-color: $primary-color;
-    }
+#nav-icon4 {
+  scale: 0.5;
+}
 
-    & .hamburger-inner {
-      background-color: white !important;
-    }
+#nav-icon4 span:nth-child(1) {
+  top: 0px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
 
-    & .hamburger-inner::before,
-    & .hamburger-inner::after {
-      background-color: white !important;
-    }
-  }
+#nav-icon4 span:nth-child(2) {
+  top: 18px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
 
-  &:hover {
-    opacity: 1 !important;
-  }
+#nav-icon4 span:nth-child(3) {
+  top: 36px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
 
-  &.is-active {
-    opacity: 1 !important;
-  }
+#nav-icon4.open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: -3px;
+  left: 8px;
+}
+
+#nav-icon4.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+#nav-icon4.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 39px;
+  left: 8px;
 }

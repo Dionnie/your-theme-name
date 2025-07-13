@@ -1,13 +1,14 @@
+@use '../base';
+
 .page-header {
   padding: 1rem;
-  background: $secondary-color;
+  background: base.$colors-secondary;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 300px;
-
-  background-color: #004d68;
+  background-color: base.$colors-primary-dark;
   background-image: url('https://www.transparenttextures.com/patterns/inspiration-geometry.png');
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }

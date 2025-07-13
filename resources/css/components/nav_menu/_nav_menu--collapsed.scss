@@ -1,12 +1,8 @@
+@use '../../abstracts';
+@use 'mixins';
+@use 'variables';
+
 ul.primary-navigation.collapsed {
-  @include rwd(1180) {
-    display: none;
-  }
-
-  &.hidden {
-    display: none;
-  }
-
   background-color: #003345;
   display: flex;
   flex-direction: column;
@@ -14,6 +10,14 @@ ul.primary-navigation.collapsed {
   top: 100%;
   left: 0;
   right: 0;
+
+  @include abstracts.rwd(1180) {
+    display: none;
+  }
+
+  &.hidden {
+    display: none;
+  }
 
   & ul.sub-menu {
     height: 0;
@@ -35,7 +39,7 @@ ul.primary-navigation.collapsed {
 ul.primary-navigation.collapsed li.menu-item {
   &.current_page_item {
     & > a {
-      @include menu-active();
+      @include mixins.menu-active();
     }
   }
 
@@ -60,7 +64,7 @@ ul.primary-navigation.collapsed li.menu-item.toggled-on {
 }
 
 ul.primary-navigation.collapsed li.menu-item > a {
-  @include menu-normal();
+  @include mixins.menu-normal();
   color: white;
   display: flex;
   flex-direction: row;
@@ -74,7 +78,7 @@ ul.primary-navigation.collapsed li.menu-item > a {
   &:hover,
   &:focus,
   &:has(.menu-dropdown-btn:focus) {
-    @include menu-active();
+    @include mixins.menu-active();
   }
 
   & .link-content {

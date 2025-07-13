@@ -2,6 +2,10 @@ import.meta.glob(['../images/**', '../fonts/**']);
 import 'bootstrap';
 
 jQuery(document).ready(function ($) {
+  $('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function () {
+    $(this).toggleClass('open');
+  });
+
   function applyAnimateHover(selector, animationName) {
     $(document).on('mouseenter', selector, function () {
       const el = $(this);

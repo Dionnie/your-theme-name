@@ -1,19 +1,23 @@
+@use '../abstracts';
+@use '../base';
+
 header {
   position: relative;
   z-index: 1;
-  @include dropdown-above-header;
+  @include abstracts.dropdown-above-header;
 }
 
 .site-name {
   font-size: 28px;
   font-weight: 700;
+  margin: 0px;
 }
 
 .site-logo {
   text-decoration: none;
   box-shadow: none;
   outline: none;
-  color: $primary-color;
+  color: base.$colors-primary;
 }
 
 .shadow-header {
@@ -32,7 +36,7 @@ header {
   color: white;
   padding: 15px 20px;
   font-size: 14px;
-  background-color: $primary-color;
+  background-color: base.$colors-primary;
   justify-content: space-between;
 }
 

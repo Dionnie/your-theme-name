@@ -53,12 +53,12 @@ use App\Walkers\CustomNavWalker;
 
 
 
-                    <button class="primary-navigation-hamburger hamburger--slider" type="button" aria-label="Menu"
-                        aria-controls="navigation">
-                        <span class="hamburger-box">
-                            <span class="hamburger-inner"></span>
-                        </span>
-                    </button>
+
+                    <div class="primary-navigation-hamburger" id="nav-icon4">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 @endif
 
 

@@ -1,0 +1,21 @@
+.menu-wrapper {
+  display: flex;
+}
+
+ul.primary-navigation.expanded {
+  display: flex;
+}
+
+.primary-navigation-hamburger {
+  display: none;
+}
+
+@media only screen and (max-width: 1180px) {
+  ul.primary-navigation.expanded {
+    display: none;
+  }
+
+  .primary-navigation-hamburger {
+    display: initial;
+  }
+}

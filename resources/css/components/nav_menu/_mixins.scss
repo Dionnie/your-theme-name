@@ -1,0 +1,53 @@
+@use '../../base';
+
+@mixin menu-normal() {
+  transition: background-color 0.5s ease;
+  padding: 1rem;
+  color: black;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+@mixin menu-hover() {
+  background: base.$colors-primary;
+  cursor: pointer;
+  box-shadow: none;
+  color: white;
+}
+
+@mixin menu-active() {
+  background: base.$colors-primary;
+  cursor: pointer;
+  box-shadow: none;
+  color: white;
+}
+
+@mixin caret() {
+  $height: 12px;
+  $width: 10px;
+  $shadow: rgba(0, 0, 0, 0.06);
+  $shadow-width: $width + 2px;
+  $shadow-height: $height + 2px;
+  $color: white;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    content: '';
+    bottom: 100%;
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    border-bottom: $height solid $color;
+    z-index: 2;
+  }
+
+  &::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    bottom: 100%;
+    border-left: $shadow-width solid transparent;
+    border-right: $shadow-width solid transparent;
+    border-bottom: $shadow-height solid $shadow;
+    z-index: 1;
+  }
+}
