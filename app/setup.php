@@ -153,6 +153,20 @@ add_action('widgets_init', function () {
         'name' => __('Footer', 'sage'),
         'id' => 'sidebar-footer',
     ] + $config);
+
+
+      register_sidebar([
+        'name' => __('Mega Menu', 'sage'),
+        'id' => 'mega-menu',
+    ] + $config);
+
+    
+
+    
+
+
+
+
 });
 
 
@@ -192,6 +206,21 @@ add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $a
 
 
 
+/* Add the shortcode and allow positioning in page*/     
+
+  
+
+
+add_shortcode('add_sidebar', function ($atts) {
+    ob_start();
+?>
+
+<?php dynamic_sidebar( 'mega-menu' ); ?>
+
+
+<?php
+    return ob_get_clean();
+});
 
 
 add_shortcode('mega_menu', function ($atts) {
@@ -199,7 +228,7 @@ add_shortcode('mega_menu', function ($atts) {
 ?>
 
 
-    <div class="mega-menuu" style="min-width: 320px;padding:20px;background-color:white">
+    <div class="mega-menuu" style="min-width: 720px;padding:20px;background-color:white">
         <div class="menu-content">
             <div class="column">
                 <h4>Category 1</h4>
@@ -215,3 +244,6 @@ add_shortcode('mega_menu', function ($atts) {
 <?php
     return ob_get_clean();
 });
+
+
+

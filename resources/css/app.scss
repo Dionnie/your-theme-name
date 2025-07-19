@@ -1,10 +1,7 @@
 @use 'animate.css';
-
 @use 'abstracts';
 @use 'base';
-
 @use 'components';
-
 @use 'layouts';
 @include layouts.sticky-footer;
 
@@ -20,4 +17,43 @@ a {
 :focus {
   outline: none;
   box-shadow: 0 0 0 3px base.$colors-primary-dark;
+}
+
+
+/*Mega*/
+.mega-menu-1 {
+  background: #f8f8f8;
+
+  font-family: sans-serif;
+}
+
+.mega-menu-1__row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.mega-menu-1__col h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.mega-menu-1__col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mega-menu-1__col ul li {
+  margin-bottom: 0.25rem;
+}
+
+.mega-menu-1__col ul li a {
+  color: #555;
+  text-decoration: none;
+}
+
+.mega-menu-1__col ul li a:hover {
+  color: #000;
 }
