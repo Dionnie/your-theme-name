@@ -1,9 +1,13 @@
+@use 'base';
+
 @use 'animate.css';
 @use 'abstracts';
-@use 'base';
+
 @use 'components';
 @use 'layouts';
 @include layouts.sticky-footer;
+
+
 
 $menu-padding: 0px;
 a {
@@ -22,8 +26,8 @@ a {
 
 /*Mega*/
 .mega-menu-1 {
-  background: #f8f8f8;
-
+background: white;
+padding: 20px;
   font-family: sans-serif;
 }
 
@@ -31,12 +35,14 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-}
+} 
 
-.mega-menu-1__col h4 {
+.mega-menu-1__col h4, .mega-menu-1__col b {
+  margin: 0;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
   color: #333;
+  white-space: nowrap;
 }
 
 .mega-menu-1__col ul {

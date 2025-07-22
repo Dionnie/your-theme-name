@@ -2,7 +2,7 @@
 
 @section('content')
   @include('partials.page-header')
-
+  <div class="page-container">
   @if (! have_posts())
     <x-alert type="warning">
       {!! __('Sorry, no results were found.', 'sage') !!}
@@ -16,6 +16,8 @@
   @endwhile
 
   {!! get_the_posts_navigation() !!}
+
+  </div>
 @endsection
 
 @section('sidebar')

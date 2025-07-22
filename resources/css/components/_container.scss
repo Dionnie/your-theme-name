@@ -1,8 +1,8 @@
-// VARIABLES
+
 $container-max-width: 1140px;
 $gap-default: 20px;
 
-// MIXINS
+
 @mixin flex-container(
   $direction: row,
   $justify: flex-start,
@@ -28,14 +28,14 @@ $gap-default: 20px;
 }
 
 .page-container {
-  @include container-layout($min-height: 100vh);
+  @include container-layout( );
   @include flex-container(
     $direction: column,
     $justify: space-between,
-    $align: center,
+    $align: left,
     $wrap: wrap,
     $gap-row: 20px,
     $gap-column: 20px
   );
-  padding: 1rem;
+  padding: 3rem 1rem;
 }

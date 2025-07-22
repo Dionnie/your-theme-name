@@ -2,7 +2,7 @@
 
 @mixin menu-normal() {
   transition: background-color 0.5s ease;
-  padding: 1rem;
+  padding: 10px 20px;
   color: black;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }

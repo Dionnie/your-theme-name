@@ -31,7 +31,7 @@ ul.primary-navigation.expanded {
 }
 
 ul.primary-navigation.expanded li.menu-item {
-  &.menu-item-has-children {
+/*   &.menu-item-has-children {
     position: relative;
     & > a > .menu-title {
       &:after {
@@ -44,7 +44,7 @@ ul.primary-navigation.expanded li.menu-item {
         vertical-align: bottom;
       }
     }
-  }
+  } */
 
   &:hover,
   &.current_page_item,
@@ -65,9 +65,8 @@ ul.primary-navigation.expanded li.menu-item {
 
 ul.primary-navigation.expanded li.menu-item > a {
   @include mixins.menu-normal();
-  min-width: 150px;
   text-align: left;
-  justify-content: space-between;
+  align-items: center;
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -114,11 +113,11 @@ ul.primary-navigation.expanded li.menu-item.toggled-on {
 
 ul.primary-navigation.expanded li.menu-item > a .menu-dropdown-btn {
   all: unset;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
-
-  &:hover {
+  margin-left: 0rem;
+/*   &:hover {
     background: rgba($color: #aac3cc, $alpha: 0.4);
   }
 
@@ -126,7 +125,7 @@ ul.primary-navigation.expanded li.menu-item > a .menu-dropdown-btn {
     z-index: 1;
     outline: 2px solid white;
   }
-
+ */
   & svg {
     transition: all 0.2s ease-in-out;
   }
@@ -154,7 +153,12 @@ ul.primary-navigation.expanded li.menu-item.level-0 {
 }
 
 ul.primary-navigation.expanded ul.sub-menu.level-1 {
-  @include mixins.caret();
+
+  & a {
+    text-align: center !important;
+  }
+
+ @include mixins.caret();
   position: absolute;
   left: unset;
   margin-top: variables.$dropdown-gap;
