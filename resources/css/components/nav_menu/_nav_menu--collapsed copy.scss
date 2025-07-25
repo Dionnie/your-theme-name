@@ -1,0 +1,143 @@
+@use '../../abstracts';
+@use 'mixins';
+@use 'variables';
+
+ul.primary-navigation.collapsed {
+  background-color: #003345;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  @include abstracts.rwd(1180) {
+    display: none;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  & ul.sub-menu {
+    height: 0;
+    flex-direction: column;
+    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+  }
+
+  &,
+  & ul.sub-menu {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+ul.primary-navigation.collapsed li.menu-item {
+  &.current_page_item {
+    & > a {
+      @include mixins.menu-active();
+    }
+  }
+
+  /* &:not(:has(li.menu-item:hover)):hover {
+    & > a {
+      @include menu-hover();
+    }
+  } */
+}
+
+ul.primary-navigation.collapsed li.menu-item.toggled-on {
+  & > a > .menu-dropdown-btn svg {
+    transform: rotate(180deg);
+  }
+
+  & > .sub-menu {
+    transform: translateY(0);
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+ul.primary-navigation.collapsed li.menu-item > a {
+  @include mixins.menu-normal();
+  color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  text-decoration: none;
+  outline: none;
+  white-space: nowrap;
+  position: relative;
+  justify-content: space-between;
+
+  &:hover,
+  &:focus,
+  &:has(.menu-dropdown-btn:focus) {
+    @include mixins.menu-active();
+  }
+
+  & .link-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    & .menu-title,
+    & .menu-description {
+      white-space: nowrap;
+    }
+  }
+}
+
+ul.primary-navigation.collapsed li.menu-item > a .menu-dropdown-btn {
+  all: unset;
+  cursor: pointer;
+  position: absolute;
+  background-color: transparent;
+  top: 10px;
+  bottom: 0;
+  right: 20px;
+  height: 30px;
+  width: 30px;
+  &:focus {
+    z-index: 1;
+    outline: 2px solid white;
+  }
+
+  & svg {
+    transition: all 0.2s ease-in-out;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+  }
+
+  &:hover {
+    background: rgba($color: #aac3cc, $alpha: 0.4);
+  }
+
+  &:focus {
+    z-index: 1;
+    outline: 2px solid white;
+  }
+}
+
+ul.primary-navigation.collapsed ul.sub-menu.level-1 {
+  & > li .menu-title,
+  & > li .menu-description {
+    margin-left: 20px;
+  }
+}
+
+ul.primary-navigation.collapsed ul.sub-menu.level-2 {
+  & > li .menu-title,
+  & > li .menu-description {
+    margin-left: 40px;
+  }
+}

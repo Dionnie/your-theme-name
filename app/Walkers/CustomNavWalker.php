@@ -13,6 +13,7 @@ class CustomNavWalker extends Walker_Nav_Menu
     {
         $indent = str_repeat("\t", $depth);
         $level_class = 'level-' . ($depth + 1);
+        $output .= "\n$indent<div class=\"sub-menu-wrapper $level_class\">\n";
         $output .= "\n$indent<ul class=\"sub-menu $level_class\">\n";
     }
 
@@ -85,20 +86,23 @@ class CustomNavWalker extends Walker_Nav_Menu
      */
     function end_el(&$output, $item, $depth = 0, $args = array())
     {
+        
         // Skip if xfn="hidden"
         if (!empty($item->xfn) && strtolower($item->xfn) === 'hidden') {
             return;
         }
 
         $output .= "</li>\n";
+  
     }
 
     /**
      * Output closing </ul> tag for submenu.
      */
     function end_lvl(&$output, $depth = 0, $args = array())
-    {
+    {   $indent = str_repeat("\t", $depth);
         $output .= str_repeat("\t", $depth) . "</ul>\n";
+                   $output .= "$indent\t</div>\n";
     }
 
     /**

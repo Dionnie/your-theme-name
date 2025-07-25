@@ -23,6 +23,7 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.7.2",
     "@popperjs/core": "^2.11.8",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.5",
