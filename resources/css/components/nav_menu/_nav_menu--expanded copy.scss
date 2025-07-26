@@ -8,25 +8,53 @@
 }
 
 ul.primary-navigation.expanded {
+  overflow: hidden;
   @extend %clear-list;
   display: flex;
   gap: 20px;
+
+  // Prevents page overflow while JS is adjusting sub-menu going off the screen.
+  &:not(:has(*:hover)) {
+    position: relative;
+  }
 }
 
 ul.primary-navigation.expanded .sub-menu-wrapper {
-  position: absolute;
-  width: fit-content;
+  //background: red;
   height: 100%;
-  width: 100%;
+
+  &.level-1 {
+    // background: orange;
+    position: absolute;
+    top: initial;
+    padding-top: 40px;
+
+    & > .sub-menu {
+      position: relative;
+    }
+  }
+
+  &.level-1 > .sub-menu > .menu-item-has-children {
+    background: greenyellow;
+    position: relative;
+  }
+
+  &.level-2 {
+    top: 0;
+    left: 100%;
+    position: absolute;
+    background: red;
+    width: max-content;
+    height: 100%;
+
+    & > .sub-menu {
+      height: 100%;
+    }
+  }
 }
 
 ul.primary-navigation.expanded ul.sub-menu {
   @extend %clear-list;
-
-  //width: fit-content;
-  width: max-content;
-
-  position: relative;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -60,28 +88,6 @@ ul.primary-navigation.expanded li.menu-item {
       @include mixins.menu-active();
     }
   }
-
-  &.level-0 {
-    /*     &.sub-menu-left-align > a {
-      background: red !important;
-    } */
-
-    &.sub-menu-left-align .sub-menu-wrapper.level-1 {
-      left: unset;
-      right: 0;
-    }
-
-    &:not(.sub-menu-left-align) .sub-menu-wrapper.level-2 {
-      top: 0;
-      left: 100%;
-      right: 0;
-    }
-
-    &.sub-menu-left-align .sub-menu-wrapper.level-2 {
-      top: 0;
-      right: 100%;
-    }
-  }
 }
 
 ul.primary-navigation.expanded li.menu-item > a {
@@ -91,8 +97,8 @@ ul.primary-navigation.expanded li.menu-item > a {
   align-items: start;
   gap: 12px;
   min-width: 140px;
-
   height: 100%;
+
   // On menu hover/focus
   &:hover,
   &:focus,
@@ -130,7 +136,6 @@ ul.primary-navigation.expanded li.menu-item.toggled-on {
 
 ul.primary-navigation.expanded li.menu-item > a .menu-dropdown-btn {
   all: unset;
-
   border-radius: 2px;
   width: 20px;
   height: 20px;
@@ -149,21 +154,16 @@ ul.primary-navigation.expanded li.menu-item > a .menu-dropdown-btn {
 }
 
 ul.primary-navigation.expanded li.menu-item.level-0 {
-  position: relative;
   &.menu-item-has-children:hover {
     border-bottom: variables.$dropdown-gap solid transparent;
     margin-bottom: -(variables.$dropdown-gap);
   }
   &.mega-menu {
-    position: initial;
     border-radius: 8px;
 
     & .sub-menu-wrapper.level-1 {
       left: 0;
       right: 0;
-      /*      left: unset;
-      right: 0; */
-
       padding-inline: 20px;
       margin-inline: auto;
       width: fit-content;
@@ -178,11 +178,7 @@ ul.primary-navigation.expanded ul.sub-menu.level-1 {
     text-align: center !important;
   }
   @include mixins.caret();
-  margin-top: variables.$dropdown-gap;
-}
-
-ul.primary-navigation.expanded ul.sub-menu.level-2 {
-  height: 100%;
+  // margin-top: variables.$dropdown-gap;
 }
 
 .customize-partial-edit-shortcut button,

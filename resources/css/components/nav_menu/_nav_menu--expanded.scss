@@ -13,8 +13,22 @@ ul.primary-navigation.expanded {
   display: flex;
   gap: 20px;
 
-  &:not(:has(*:hover)) {
+  // Prevents page overflow while JS is adjusting sub-menu going off the screen.
+  /*  &:not(:has(*:hover)) {
     position: relative;
+  } */
+}
+
+ul.primary-navigation.expanded .menu-item.level-0.mega-menu {
+  border-radius: 8px;
+  & .sub-menu-wrapper.level-1 {
+    left: 0;
+    right: 0;
+    padding-inline: 20px;
+    margin-inline: auto;
+    width: fit-content;
+    max-width: 1140px;
+    width: 100%;
   }
 }
 
@@ -34,8 +48,8 @@ ul.primary-navigation.expanded .sub-menu-wrapper {
   }
 
   &.level-1 > .sub-menu > .menu-item-has-children {
-    background: greenyellow !important;
-    position: relative !important;
+    background: greenyellow;
+    position: relative;
   }
 
   &.level-2 {
@@ -54,8 +68,6 @@ ul.primary-navigation.expanded .sub-menu-wrapper {
 
 ul.primary-navigation.expanded ul.sub-menu {
   @extend %clear-list;
-  //width: fit-content;
-
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -98,8 +110,8 @@ ul.primary-navigation.expanded li.menu-item > a {
   align-items: start;
   gap: 12px;
   min-width: 140px;
-
   height: 100%;
+
   // On menu hover/focus
   &:hover,
   &:focus,
@@ -137,7 +149,6 @@ ul.primary-navigation.expanded li.menu-item.toggled-on {
 
 ul.primary-navigation.expanded li.menu-item > a .menu-dropdown-btn {
   all: unset;
-
   border-radius: 2px;
   width: 20px;
   height: 20px;
@@ -152,29 +163,6 @@ ul.primary-navigation.expanded li.menu-item > a .menu-dropdown-btn {
   & svg {
     width: 18px;
     transition: all 0.2s ease-in-out;
-  }
-}
-
-ul.primary-navigation.expanded li.menu-item.level-0 {
-  &.menu-item-has-children:hover {
-    border-bottom: variables.$dropdown-gap solid transparent;
-    margin-bottom: -(variables.$dropdown-gap);
-  }
-  &.mega-menu {
-    border-radius: 8px;
-
-    & .sub-menu-wrapper.level-1 {
-      left: 0;
-      right: 0;
-      /*      left: unset;
-      right: 0; */
-
-      padding-inline: 20px;
-      margin-inline: auto;
-      width: fit-content;
-      max-width: 1140px;
-      width: 100%;
-    }
   }
 }
 
