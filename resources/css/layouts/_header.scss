@@ -2,7 +2,6 @@
 @use '../base';
 
 header {
-  // position: relative;
   z-index: 1;
   @include abstracts.dropdown-above-header;
 }
@@ -41,8 +40,6 @@ header {
 }
 
 .containerr {
-  position: relative;
-
   width: 100%;
   padding: 20px 20px;
   display: flex;

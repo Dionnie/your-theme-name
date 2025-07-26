@@ -8,7 +8,6 @@
 }
 
 ul.primary-navigation.expanded {
-  overflow: hidden;
   @extend %clear-list;
   display: flex;
   gap: 20px;
@@ -48,7 +47,7 @@ ul.primary-navigation.expanded .sub-menu-wrapper {
   }
 
   &.level-1 > .sub-menu > .menu-item-has-children {
-    background: greenyellow;
+    // background: greenyellow;
     position: relative;
   }
 
@@ -56,7 +55,7 @@ ul.primary-navigation.expanded .sub-menu-wrapper {
     top: 0;
     left: 100%;
     position: absolute;
-    background: red;
+    //background: red;
     width: max-content;
     height: 100%;
 
