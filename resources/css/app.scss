@@ -26,12 +26,11 @@ a {
   //min-width: 500px;
   background: white;
   padding: 20px;
-  font-family: sans-serif;
 }
 
 .mega-menu-1__row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -45,7 +44,7 @@ a {
 .mega-menu-1__col p {
   color: #383838;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.4rem;
   white-space: nowrap;
 }
 
