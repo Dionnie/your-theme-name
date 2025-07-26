@@ -7,8 +7,6 @@
 @use 'layouts';
 @include layouts.sticky-footer;
 
-
-
 $menu-padding: 0px;
 a {
   color: base.$colors-primary;
@@ -23,11 +21,11 @@ a {
   box-shadow: 0 0 0 3px base.$colors-primary-dark;
 }
 
-
 /*Mega*/
 .mega-menu-1 {
-background: white;
-padding: 20px;
+  min-width: 500px;
+  background: white;
+  padding: 20px;
   font-family: sans-serif;
 }
 
@@ -35,13 +33,19 @@ padding: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-} 
+}
 
-.mega-menu-1__col h4, .mega-menu-1__col b {
-  margin: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-  color: #333;
+.mega-menu-1__col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mega-menu-1__col h4,
+.mega-menu-1__col p {
+  color: #383838;
+  font-weight: 600;
+  font-size: 18px;
   white-space: nowrap;
 }
 
