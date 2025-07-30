@@ -39,7 +39,7 @@ ul.primary-navigation.expanded .sub-menu-wrapper {
     // background: orange;
     position: absolute;
     top: initial;
-    padding-top: 40px;
+    padding-top: 20px;
 
     & > .sub-menu {
       position: relative;
@@ -74,6 +74,11 @@ ul.primary-navigation.expanded ul.sub-menu {
 }
 
 ul.primary-navigation.expanded li.menu-item {
+  &.level-0 > a {
+    justify-content: center;
+    align-items: center;
+  }
+
   height: 100%;
   // On menu hover show sub-menu
   & > .sub-menu-wrapper {
