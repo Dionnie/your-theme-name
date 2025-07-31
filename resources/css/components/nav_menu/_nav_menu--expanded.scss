@@ -34,13 +34,11 @@ ul.primary-navigation.expanded .menu-item.level-0.mega-menu {
 ul.primary-navigation.expanded .sub-menu-wrapper {
   //background: red;
   height: 100%;
-
   &.level-1 {
     // background: orange;
     position: absolute;
     top: initial;
     padding-top: 20px;
-
     & > .sub-menu {
       position: relative;
     }
@@ -58,7 +56,6 @@ ul.primary-navigation.expanded .sub-menu-wrapper {
     //background: red;
     width: max-content;
     height: 100%;
-
     & > .sub-menu {
       height: 100%;
     }
